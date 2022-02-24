@@ -6,11 +6,12 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{mathtools}
+\usepackage[backend=biber]{biblatex}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \usepackage{pgfplots}
 \pgfplotsset{width=10cm,compat=1.9}
-
+\addbibresource{planrefs.bib}
 
 \begin{document}
 \title{Minecraft Settlement Generation AI - Project Plan}
@@ -34,6 +35,7 @@
 \section{Tasks}
 \label{tasks}
 
+
 \newpage
 
 
@@ -45,6 +47,7 @@
 
 \section{References}
 \label{references}
-
+\nocite{*}
+\printbibliography[heading=none]
 
 \end{document}
