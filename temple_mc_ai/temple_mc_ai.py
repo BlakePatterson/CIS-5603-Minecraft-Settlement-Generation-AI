@@ -26,48 +26,42 @@ if buildArea == -1:
 STARTX, STARTY, STARTZ, ENDX, ENDY, ENDZ = buildArea
 
 WORLDSLICE = WL.WorldSlice(STARTX, STARTZ,
-                          ENDX + 1, ENDZ + 1)
+                         ENDX + 1, ENDZ + 1)
 
 
 def buildPerimeter():
     """Build a wall along the build area border.
-
-    In this function we're building a simple wall around the build area
-        pillar-by-pillar, which means we can adjust to the terrain height
     """
 
     heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
-    print("Building east-west walls...")
+    print("Building walls...")
 
-    for x in range(STARTX, ENDX + 1):
-        # the northern wall
-        y = heights[(x, STARTZ)]
-        GEO.placeCuboid(x, y - 2, STARTZ, x, y, STARTZ, "granite")
-        GEO.placeCuboid(x, y + 1, STARTZ, x, y + 4, STARTZ, "granite_wall")
-        # the southern wall
-        y = heights[(x, ENDZ)]
-        GEO.placeCuboid(x, y - 2, ENDZ, x, y, ENDZ, "red_sandstone")
-        GEO.placeCuboid(x, y + 1, ENDZ, x, y + 4, ENDZ, "red_sandstone_wall")
-
-    print("Building north-south walls...")
-
-    for z in range(STARTZ, ENDZ + 1):
-        # the western wall
-        y = heights[(STARTX, z)]
-        GEO.placeCuboid(STARTX, y - 2, z, STARTX, y, z, "sandstone")
-        GEO.placeCuboid(STARTX, y + 1, z, STARTX, y + 4, z, "sandstone_wall")
-        # the eastern wall
-        y = heights[(ENDX, z)]
-        GEO.placeCuboid(ENDX, y - 2, z, ENDX, y, z, "prismarine")
-        GEO.placeCuboid(ENDX, y + 1, z, ENDX, y + 4, z, "prismarine_wall")
-
+    for x in range(STARTX, ENDX):
+        z = STARTZ
+        y = heights[(x - STARTX, z - STARTZ)]
+        INTF.placeBlock(x, y - 1, z, "cobblestone")
+        GEO.placeCuboid(x, y, z, x, y + 4, z, "granite_wall")
+    for z in range(STARTZ, ENDZ):
+        x = STARTX
+        y = heights[(x - STARTX, z - STARTZ)]
+        INTF.placeBlock(x, y - 1, z, "cobblestone")
+        GEO.placeCuboid(x, y, z, x, y + 4, z, "red_sandstone_wall")
+    for x in range(STARTX, ENDX):
+        z = ENDZ
+        y = heights[(x - STARTX, z - STARTZ)]
+        INTF.placeBlock(x, y - 1, z, "cobblestone")
+        GEO.placeCuboid(x, y, z, x, y + 4, z, "sandstone_wall")
+    for z in range(STARTZ, ENDZ):
+        x = ENDX
+        y = heights[(x - STARTX, z - STARTZ)]
+        INTF.placeBlock(x, y - 1, z, "cobblestone")
+        GEO.placeCuboid(x, y, z, x, y + 4, z, "prismarine_wall")
 
 if __name__ == '__main__':
-
+    
     try:
-        height = WORLDSLICE.heightmaps["MOTION_BLOCKING"][(STARTX, STARTY)]
         buildPerimeter()
-
         print("Done!")
+        
     except KeyboardInterrupt:
         print("Pressed Ctrl-C to kill program.")
