@@ -14,6 +14,7 @@ from gdpc import toolbox as TB
 from gdpc import worldLoader as WL
 
 import utils.argParser as argParser
+import generation.houseGenerator as houseGenerator
 
 
 args, parser = argParser.giveArgs()
@@ -29,11 +30,10 @@ WORLDSLICE = WL.WorldSlice(STARTX, STARTZ,
                          ENDX + 1, ENDZ + 1)
 
 
-def buildPerimeter():
+def buildPerimeter(heights):
     """Build a wall along the build area border.
     """
 
-    heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
     print("Building walls...")
 
     for x in range(STARTX, ENDX):
@@ -60,7 +60,21 @@ def buildPerimeter():
 if __name__ == '__main__':
     
     try:
-        buildPerimeter()
+        heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
+
+        buildPerimeter(heights)
+
+        # calculate the center x & z coordinates of the build area
+        middle_x = round((STARTX + ENDX) / 2)
+        middle_z = round((STARTZ + ENDZ) / 2)
+
+        # get the height of the ground in the middle of the build area
+        floor_level = heights[(ENDX - middle_x, ENDZ - middle_z)]
+
+        # build a house in the center of the build area
+        houseGenerator.build_house(middle_x - 10, floor_level, middle_z - 10, 
+                                    middle_x + 9, floor_level + 6, middle_z + 9)
+
         print("Done!")
         
     except KeyboardInterrupt:
