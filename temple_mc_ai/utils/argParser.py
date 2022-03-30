@@ -17,6 +17,10 @@ def giveArgs():
                         help="Build using default area",
                     action="store_true")
     
+    parser.add_argument("-t", "--terraform",
+                        help="Clear trees and grass",
+                    action="store_true")
+    
     parser.add_argument("-r", "--radius", type=int, metavar="R",
                         help="Use in conjunction with -p to override default radius of 128")
     
