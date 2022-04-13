@@ -137,7 +137,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether left has an obstacle in the way or not
             left_is_obstacle = False
-            # if moving left is a more than 4 difference in height, do not move left
+            # if moving left is a more than 2 difference in height, do not move left
             height_diff = get_height_difference(current_state, State(current_state.x, current_state.z - 1), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 left_is_obstacle = True
@@ -159,7 +159,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether right has an obstacle in the way or not
             right_is_obstacle = False
-            # if moving right is a more than 4 difference in height, do not move right
+            # if moving right is a more than 2 difference in height, do not move right
             height_diff = get_height_difference(current_state, State(current_state.x, current_state.z + 1), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 right_is_obstacle = True
@@ -181,7 +181,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether up has an obstacle in the way or not
             up_is_obstacle = False
-            # if moving up is a more than 4 difference in height, do not move up
+            # if moving up is a more than 2 difference in height, do not move up
             height_diff = get_height_difference(current_state, State(current_state.x - 1, current_state.z), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 up_is_obstacle = True
@@ -203,7 +203,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether down has an obstacle in the way or not
             down_is_obstacle = False
-            # if moving down is a more than 4 difference in height, do not move down
+            # if moving down is a more than 2 difference in height, do not move down
             height_diff = get_height_difference(current_state, State(current_state.x + 1, current_state.z), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 down_is_obstacle = True
@@ -225,7 +225,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether up_left has an obstacle in the way or not
             up_left_is_obstacle = False
-            # if moving up_left is a more than 4 difference in height, do not move up_left
+            # if moving up_left is a more than 2 difference in height, do not move up_left
             height_diff = get_height_difference(current_state, State(current_state.x - 1, current_state.z - 1), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 up_left_is_obstacle = True
@@ -247,7 +247,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether up_right has an obstacle in the way or not
             up_right_is_obstacle = False
-            # if moving up_right is a more than 4 difference in height, do not move up_right
+            # if moving up_right is a more than 2 difference in height, do not move up_right
             height_diff = get_height_difference(current_state, State(current_state.x - 1, current_state.z + 1), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 up_right_is_obstacle = True
@@ -269,7 +269,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether down_left has an obstacle in the way or not
             down_left_is_obstacle = False
-            # if moving down_left is a more than 4 difference in height, do not move down_left
+            # if moving down_left is a more than 2 difference in height, do not move down_left
             height_diff = get_height_difference(current_state, State(current_state.x + 1, current_state.z - 1), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 down_left_is_obstacle = True
@@ -291,7 +291,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
             # check whether down_right has an obstacle in the way or not
             down_right_is_obstacle = False
-            # if moving down_right is a more than 4 difference in height, do not move down_right
+            # if moving down_right is a more than 2 difference in height, do not move down_right
             height_diff = get_height_difference(current_state, State(current_state.x + 1, current_state.z + 1), heights, height_start_x, height_start_z)
             if height_diff >= 2:
                 down_right_is_obstacle = True
