@@ -60,7 +60,7 @@ if __name__ == '__main__':
         heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
         
         # calculate buildable areas
-        subgrid_sort = height_analysis.find_flat(heights, buildArea)
+        # subgrid_sort = height_analysis.find_flat(heights, buildArea)
           
         # build perimeter
         perimeterGenerator.buildPerimeter(heights, buildArea)
@@ -69,7 +69,10 @@ if __name__ == '__main__':
         houseGenerator.build_house(middle_x - 10, floor_level, middle_z - 10, 
                                     middle_x + 9, floor_level + 6, middle_z + 9)
 
-        pathGenerator.build_path(STARTX + 10, STARTZ + 10, ENDX - 10, ENDZ - 10, heights, ENDX, ENDZ)
+        # reload heightmap
+        heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
+
+        pathGenerator.build_path(STARTX + 10, STARTZ + 10, ENDX - 10, ENDZ - 10, heights, STARTX, STARTZ)
 
         print("Done!")
         

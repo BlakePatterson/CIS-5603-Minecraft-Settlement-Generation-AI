@@ -59,14 +59,14 @@ def has_reached_goal(current_state, goal_state):
     return current_state.equals(goal_state)
 
 
-def get_height_difference(state1, state2, heights, height_end_x, height_end_z):
+def get_height_difference(state1, state2, heights, height_start_x, height_start_z):
     """
     Helper function which returns the height difference between two points
     """
-    return abs(heights[(height_end_x - state1.x, height_end_z - state1.z)] - heights[(height_end_x - state2.x, height_end_z - state2.z)])
+    return abs(heights[(state1.x - height_start_x, state1.z - height_start_z)] - heights[(state2.x - height_start_x, state2.z - height_start_z)])
 
 
-def build_path(start_x, start_z, end_x, end_z, heights, height_end_x, height_end_z): 
+def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_start_z): 
     """
     Builds a simple path between the two specified points using A*
     """
@@ -138,8 +138,8 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_end_x, height_end
             # check whether left has an obstacle in the way or not
             left_is_obstacle = False
             # if moving left is a more than 4 difference in height, do not move left
-            height_diff = get_height_difference(current_state, State(current_state.x, current_state.z - 1), heights, height_end_x, height_end_z)
-            if height_diff >= 5:
+            height_diff = get_height_difference(current_state, State(current_state.x, current_state.z - 1), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
                 left_is_obstacle = True
 
             # moving left has not been explored yet & is not an obstacle, so add it to the open set
@@ -160,8 +160,8 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_end_x, height_end
             # check whether right has an obstacle in the way or not
             right_is_obstacle = False
             # if moving right is a more than 4 difference in height, do not move right
-            height_diff = get_height_difference(current_state, State(current_state.x, current_state.z + 1), heights, height_end_x, height_end_z)
-            if height_diff >= 5:
+            height_diff = get_height_difference(current_state, State(current_state.x, current_state.z + 1), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
                 right_is_obstacle = True
 
             # moving right has not been explored yet & is not an obstacle, so add it to the open set
@@ -182,8 +182,8 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_end_x, height_end
             # check whether up has an obstacle in the way or not
             up_is_obstacle = False
             # if moving up is a more than 4 difference in height, do not move up
-            height_diff = get_height_difference(current_state, State(current_state.x - 1, current_state.z), heights, height_end_x, height_end_z)
-            if height_diff >= 5:
+            height_diff = get_height_difference(current_state, State(current_state.x - 1, current_state.z), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
                 up_is_obstacle = True
 
             # moving up has not been explored yet & is not an obstacle, so add it to the open set
@@ -204,13 +204,102 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_end_x, height_end
             # check whether down has an obstacle in the way or not
             down_is_obstacle = False
             # if moving down is a more than 4 difference in height, do not move down
-            height_diff = get_height_difference(current_state, State(current_state.x + 1, current_state.z), heights, height_end_x, height_end_z)
-            if height_diff >= 5:
+            height_diff = get_height_difference(current_state, State(current_state.x + 1, current_state.z), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
                 down_is_obstacle = True
 
             # moving down has not been explored yet & is not an obstacle, so add it to the open set
             if down_is_explored is False and down_is_obstacle is False:
                 open_set.append(State(current_state.x + 1, current_state.z, current_state))
+
+
+        # examine moving up_left
+        # check whether moving up_left is a valid move
+        if current_state.z - 1 >= start_z and current_state.x - 1 >= start_x:
+            # check whether up_left has already been explored
+            up_left_is_explored = False
+            for i in range(len(closed_set)):
+                if State(current_state.x - 1, current_state.z - 1).equals(closed_set[i]):
+                    up_left_is_explored = True
+                    break
+
+            # check whether up_left has an obstacle in the way or not
+            up_left_is_obstacle = False
+            # if moving up_left is a more than 4 difference in height, do not move up_left
+            height_diff = get_height_difference(current_state, State(current_state.x - 1, current_state.z - 1), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
+                up_left_is_obstacle = True
+
+            # moving up_left has not been explored yet & is not an obstacle, so add it to the open set
+            if up_left_is_explored is False and up_left_is_obstacle is False:
+                open_set.append(State(current_state.x - 1, current_state.z - 1, current_state))
+
+
+        # examine moving up_right
+        # check whether moving up_right is a valid move
+        if current_state.z + 1 <= end_z and current_state.x - 1 >= start_x:
+            # check whether up_right has already been explored
+            up_right_is_explored = False
+            for i in range(len(closed_set)):
+                if State(current_state.x - 1, current_state.z + 1).equals(closed_set[i]):
+                    up_right_is_explored = True
+                    break
+
+            # check whether up_right has an obstacle in the way or not
+            up_right_is_obstacle = False
+            # if moving up_right is a more than 4 difference in height, do not move up_right
+            height_diff = get_height_difference(current_state, State(current_state.x - 1, current_state.z + 1), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
+                up_right_is_obstacle = True
+
+            # moving up_right has not been explored yet & is not an obstacle, so add it to the open set
+            if up_right_is_explored is False and up_right_is_obstacle is False:
+                open_set.append(State(current_state.x - 1, current_state.z + 1, current_state))
+
+
+        # examine moving down_left
+        # check whether moving down_left is a valid move
+        if current_state.z - 1 >= start_z and current_state.x + 1 <= end_x:
+            # check whether down_left has already been explored
+            down_left_is_explored = False
+            for i in range(len(closed_set)):
+                if State(current_state.x + 1, current_state.z - 1).equals(closed_set[i]):
+                    down_left_is_explored = True
+                    break
+
+            # check whether down_left has an obstacle in the way or not
+            down_left_is_obstacle = False
+            # if moving down_left is a more than 4 difference in height, do not move down_left
+            height_diff = get_height_difference(current_state, State(current_state.x + 1, current_state.z - 1), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
+                down_left_is_obstacle = True
+
+            # moving down_left has not been explored yet & is not an obstacle, so add it to the open set
+            if down_left_is_explored is False and down_left_is_obstacle is False:
+                open_set.append(State(current_state.x + 1, current_state.z - 1, current_state))
+
+
+        # examine moving down_right
+        # check whether moving down_right is a valid move
+        if current_state.z + 1 <= end_z and current_state.x + 1 <= end_x:
+            # check whether down_right has already been explored
+            down_right_is_explored = False
+            for i in range(len(closed_set)):
+                if State(current_state.x + 1, current_state.z + 1).equals(closed_set[i]):
+                    down_right_is_explored = True
+                    break
+
+            # check whether down_right has an obstacle in the way or not
+            down_right_is_obstacle = False
+            # if moving down_right is a more than 4 difference in height, do not move down_right
+            height_diff = get_height_difference(current_state, State(current_state.x + 1, current_state.z + 1), heights, height_start_x, height_start_z)
+            if height_diff >= 2:
+                down_right_is_obstacle = True
+
+            # moving down_right has not been explored yet & is not an obstacle, so add it to the open set
+            if down_right_is_explored is False and down_right_is_obstacle is False:
+                open_set.append(State(current_state.x + 1, current_state.z + 1, current_state))
+
 
     # generate an array containing a list of states representing the found path
     path = []
@@ -221,17 +310,25 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_end_x, height_end
     
     # notify if there is no complete path
     if goal_reached is False:
-        print('no solution, path not possible given current settings')
-        # path.clear()
-        # current_state = State(-1, -1)
+        print('NO SOLUTION, path not possible given current settings, placing what was found so far')
 
-    print("Starting path")
+    # print("Starting path")
     for i in range(len(path)):
-        print("(", path[i].x, ",", path[i].z, ")", end="; ")
-        height = heights[(height_end_x - path[i].x, height_end_z - path[i].z)] - 1
+        # print("(", path[i].x, ",", path[i].z, ")", end="; ")
+        height = heights[(path[i].x - height_start_x, path[i].z - height_start_z)] - 1
+
+        # place blocks in a 1 block radius around the chosen point
         INTF.placeBlock(path[i].x, height, path[i].z, path_material_id)
+        INTF.placeBlock(path[i].x - 1, height, path[i].z, path_material_id)
+        INTF.placeBlock(path[i].x - 1, height, path[i].z - 1, path_material_id)
+        INTF.placeBlock(path[i].x - 1, height, path[i].z + 1, path_material_id)
+        INTF.placeBlock(path[i].x, height, path[i].z - 1, path_material_id)
+        INTF.placeBlock(path[i].x, height, path[i].z + 1, path_material_id)
+        INTF.placeBlock(path[i].x + 1, height, path[i].z - 1, path_material_id)
+        INTF.placeBlock(path[i].x + 1, height, path[i].z + 1, path_material_id)
+        INTF.placeBlock(path[i].x + 1, height, path[i].z, path_material_id)
     print()
-    print("End of path")
+    # print("End of path")
 
 
 
