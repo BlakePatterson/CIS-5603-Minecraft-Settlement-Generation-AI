@@ -33,15 +33,27 @@ tree = [
     'minecraft:mushroom_block',
     'minecraft:brown_mushroom_block'
     ]
+leaves = [
+    'minecraft:oak_leaves',
+    'minecraft:dark_oak_leaves',
+    'minecraft:birch_leaves',
+    'minecraft:spruce_leaves',
+    'minecraft:birch_leaves',
+    'minecraft:acacia_leaves',
+    'minecraft:jungle_leaves'
+    ]
       
         
-def treeAnnihilator(heights, buildArea):
+def treeAnnihilator(heights, start_x, start_y, start_z, end_x, end_y, end_z):
     print('Terraforming...')
-    print(buildArea)
-    start_x, start_y, start_z, end_x, end_y, end_z = buildArea
     
     tree_tops = []
     tree_bottoms = []
+    
+    # start_x = start_x - 3
+    # start_z = start_z - 3
+    # end_x = end_x + 3
+    # end_z = end_z + 3
     
     # looks for wood in heightmap across build area and gets coordinates of tree tops
     for x in range(start_x, end_x):
@@ -59,7 +71,7 @@ def treeAnnihilator(heights, buildArea):
             x -= 1
         tree_bottoms.append([tree_tops[m][0], tree_tops[m][1] + x, tree_tops[m][2]])
     
-    # put air in a 4x4 by height buffer around each tree
+    # put air in a 6x6 by height buffer around each tree
     for m in range(0, len(tree_tops)):
         buffer = 3
         # place the first layer with no buffer
@@ -73,7 +85,6 @@ def treeAnnihilator(heights, buildArea):
             GEO.placeCuboid(tree_tops[m][0] - buffer, tree_bottoms[m][1] + 3, tree_tops[m][2] - buffer,
                         tree_tops[m][0] + buffer, tree_tops[m][1] + buffer, tree_tops[m][2] + buffer, "air")
             
-        
 
         
         

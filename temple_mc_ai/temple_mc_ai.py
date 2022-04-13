@@ -16,6 +16,7 @@ import utils.argParser as argParser
 import generation.houseGenerator as houseGenerator
 import generation.perimeterGenerator as perimeterGenerator
 import generation.terraForm as terraForm
+import analysis.height_analysis as height_analysis
 
 
 args, parser = argParser.giveArgs()
@@ -47,7 +48,8 @@ if __name__ == '__main__':
         
         # remove trees around house
         if args.terraform is True:
-            terraForm.treeAnnihilator(heights, buildArea)
+            terraForm.treeAnnihilator(heights, STARTX, STARTY, STARTZ, ENDX, ENDY, ENDZ)
+            #terraForm.cleanerTree(heights, buildArea)
         
         # reload worldslice to account for changed blocks
         WORLDSLICE = WL.WorldSlice(STARTX, STARTZ,
@@ -56,12 +58,15 @@ if __name__ == '__main__':
         # reload heightmap
         heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
         
+        # calculate buildable areas
+        subgrid_sort = height_analysis.find_flat(heights, buildArea)
+          
         # build perimeter
         perimeterGenerator.buildPerimeter(heights, buildArea)
         
-        # build a house in the center of the build area
+        #build a house in the center of the build area
         houseGenerator.build_house(middle_x - 10, floor_level, middle_z - 10, 
-                                   middle_x + 9, floor_level + 6, middle_z + 9)
+                                    middle_x + 9, floor_level + 6, middle_z + 9)
 
         print("Done!")
         
