@@ -69,6 +69,10 @@ if __name__ == '__main__':
         houseGenerator.build_house(middle_x - 10, floor_level, middle_z - 10, 
                                     middle_x + 9, floor_level + 6, middle_z + 9)
 
+        # reload worldslice to account for changed blocks
+        WORLDSLICE = WL.WorldSlice(STARTX, STARTZ,
+                                 ENDX + 1, ENDZ + 1)
+
         # reload heightmap
         heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
 
