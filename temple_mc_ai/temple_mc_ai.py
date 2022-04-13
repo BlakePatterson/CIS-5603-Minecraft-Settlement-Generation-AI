@@ -15,6 +15,7 @@ from gdpc import worldLoader as WL
 import utils.argParser as argParser
 import generation.houseGenerator as houseGenerator
 import generation.perimeterGenerator as perimeterGenerator
+import generation.pathGenerator as pathGenerator
 import generation.terraForm as terraForm
 import analysis.height_analysis as height_analysis
 
@@ -67,6 +68,8 @@ if __name__ == '__main__':
         #build a house in the center of the build area
         houseGenerator.build_house(middle_x - 10, floor_level, middle_z - 10, 
                                     middle_x + 9, floor_level + 6, middle_z + 9)
+
+        pathGenerator.build_path(STARTX + 10, STARTZ + 10, ENDX - 10, ENDZ - 10, heights, ENDX, ENDZ)
 
         print("Done!")
         
