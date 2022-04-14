@@ -1,7 +1,6 @@
 from __future__ import print_function
 from tracemalloc import start
 from gdpc import interface as INTF
-import analysis.heightAnalysis as heightAnalysis
 import random
 
 
@@ -95,6 +94,6 @@ def build_settlement(coord_array):
         endx = coord_array[i][2] +  random.randint(-2, 2)
         endz = coord_array[i][3] +  random.randint(-2, 2)
         starty = coord_array[i][5]
-        endy = starty + 6
+        endy = starty + random.randint(5, 8)
 
-        build_house(startx + 7, starty, startz + 7, endx - 7, endy, endz - 7)
+        build_house(startx + 5, starty, startz + 5, endx - 5, endy, endz - 5)

@@ -14,23 +14,27 @@ def buildPerimeter(heights, buildArea):
     
     STARTX, STARTY, STARTZ, ENDX, ENDY, ENDZ = buildArea
 
-    for x in range(STARTX, ENDX):
+    fence_material = 'spruce_fence[east=false,north=false,west=false,south=false]'
+
+    for x in range(STARTX, ENDX + 1):
         z = STARTZ
         y = heights[(x - STARTX, z - STARTZ)]
         INTF.placeBlock(x, y - 1, z, "cobblestone")
-        GEO.placeCuboid(x, y, z, x, y + 4, z, "granite_wall")
+        GEO.placeCuboid(x, y, z, x, y + 4, z, fence_material)
     for z in range(STARTZ, ENDZ):
         x = STARTX
         y = heights[(x - STARTX, z - STARTZ)]
         INTF.placeBlock(x, y - 1, z, "cobblestone")
-        GEO.placeCuboid(x, y, z, x, y + 4, z, "red_sandstone_wall")
-    for x in range(STARTX, ENDX):
+        GEO.placeCuboid(x, y, z, x, y + 4, z, fence_material)
+    for x in range(STARTX, ENDX + 1):
         z = ENDZ
         y = heights[(x - STARTX, z - STARTZ)]
         INTF.placeBlock(x, y - 1, z, "cobblestone")
-        GEO.placeCuboid(x, y, z, x, y + 4, z, "sandstone_wall")
+        GEO.placeCuboid(x, y, z, x, y + 4, z, fence_material)
     for z in range(STARTZ, ENDZ):
         x = ENDX
         y = heights[(x - STARTX, z - STARTZ)]
         INTF.placeBlock(x, y - 1, z, "cobblestone")
-        GEO.placeCuboid(x, y, z, x, y + 4, z, "prismarine_wall")
+        GEO.placeCuboid(x, y, z, x, y + 4, z, fence_material)
+
+    

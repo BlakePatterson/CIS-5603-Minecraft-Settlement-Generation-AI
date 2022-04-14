@@ -1,4 +1,5 @@
 import statistics as stat
+import random
 
     
 def find_flat(heights, buildArea):
@@ -14,6 +15,21 @@ def find_flat(heights, buildArea):
     '''
     # this line will be rewritten as the subgrid coords
     startx, starty, startz, endx, endy, endz = buildArea
+
+    # slightly randomizing x z coord of grid
+    # first shrinking buildarea by max jitter amount so it doesn't exceed max build area
+    build_offset = 4
+    startx = startx + build_offset
+    startz = startz + build_offset
+    endx = endx - build_offset
+    endz = endz - build_offset
+
+    # applying randomness to grid locations
+    offset = [-4, 4]
+    startx = startx + random.randint(offset[0], offset[1])
+    startz = startz + random.randint(offset[0], offset[1])
+    endx = endx + random.randint(offset[0], offset[1])
+    endz = endz + random.randint(offset[0], offset[1])
     
     # this line is used as the original build area coords
     startx_area, starty_area, startz_area, endx_area, endy_area, endz_area = buildArea
@@ -55,7 +71,6 @@ def find_flat(heights, buildArea):
         middlex = round((startx + endx) / 2)
         middlez = round((startz + endz) / 2)
         floor_level = heights[(middlex - startx_area, middlez - startz_area)]
-        print(floor_level)
         subgrids[m].append(floor_level)
 
     # order subgrids by descending flatness

@@ -49,12 +49,7 @@ def treeAnnihilator(heights, start_x, start_y, start_z, end_x, end_y, end_z):
     
     tree_tops = []
     tree_bottoms = []
-    
-    # start_x = start_x - 3
-    # start_z = start_z - 3
-    # end_x = end_x + 3
-    # end_z = end_z + 3
-    
+        
     # looks for wood in heightmap across build area and gets coordinates of tree tops
     for x in range(start_x, end_x):
         for z in range(start_z, end_z):
@@ -62,7 +57,6 @@ def treeAnnihilator(heights, start_x, start_y, start_z, end_x, end_y, end_z):
             block = INTF.getBlock(x, y, z)
             if block in tree:
                 tree_tops.append([x,y,z])
-    print(tree_tops)
     
     # check if block below is still tree, add coords to new array when bottom found
     for m in range(0, len(tree_tops)):
