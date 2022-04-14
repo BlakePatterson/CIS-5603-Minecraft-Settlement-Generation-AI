@@ -17,7 +17,7 @@ import generation.houseGenerator as houseGenerator
 import generation.perimeterGenerator as perimeterGenerator
 import generation.pathGenerator as pathGenerator
 import generation.terraForm as terraForm
-import analysis.height_analysis as height_analysis
+import analysis.heightAnalysis as heightAnalysis
 
 
 args, parser = argParser.giveArgs()
@@ -60,14 +60,13 @@ if __name__ == '__main__':
         heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
         
         # calculate buildable areas
-        # subgrid_sort = height_analysis.find_flat(heights, buildArea)
+        subgrid_sort = heightAnalysis.find_flat(heights, buildArea)
           
         # build perimeter
         perimeterGenerator.buildPerimeter(heights, buildArea)
-        
-        #build a house in the center of the build area
-        houseGenerator.build_house(middle_x - 10, floor_level, middle_z - 10, 
-                                    middle_x + 9, floor_level + 6, middle_z + 9)
+
+        # build village
+        houseGenerator.build_settlement(subgrid_sort)
 
         # reload worldslice to account for changed blocks
         WORLDSLICE = WL.WorldSlice(STARTX, STARTZ,
@@ -76,7 +75,7 @@ if __name__ == '__main__':
         # reload heightmap
         heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
 
-        pathGenerator.build_path(STARTX + 10, STARTZ + 10, ENDX - 10, ENDZ - 10, heights, STARTX, STARTZ)
+        pathGenerator.build_path(STARTX + 5, STARTZ + 5, ENDX - 5, ENDZ - 5, heights, STARTX, STARTZ)
 
         print("Done!")
         

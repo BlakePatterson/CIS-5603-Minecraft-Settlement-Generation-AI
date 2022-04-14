@@ -9,7 +9,7 @@ def find_flat(heights, buildArea):
     
     Returns
     -------
-    ordered arrays of 16 subgrids, from flattest to least flat, stored in array [[startx, startz, endx, endz, height_std_dev], ...]
+    ordered arrays of 16 subgrids, from flattest to least flat, stored in array [[startx, startz, endx, endz, height_std_dev, floor level], ...]
 
     '''
     # this line will be rewritten as the subgrid coords
@@ -45,11 +45,19 @@ def find_flat(heights, buildArea):
             for x in range(startx, endx):
                 all_heights.append(heights[(x - startx_area, z - startz_area)])
         subgrids[m].append(stat.pstdev(all_heights))
-    
+
+    # calculate middle height of each subgrid
+    for m in range(0, len(subgrids)):
+        startx = int(subgrids[m][0])
+        endx = int(subgrids[m][2])
+        startz = int(subgrids[m][1])
+        endz = int(subgrids[m][3])
+        middlex = round((startx + endx) / 2)
+        middlez = round((startz + endz) / 2)
+        floor_level = heights[(middlex - startx_area, middlez - startz_area)]
+        print(floor_level)
+        subgrids[m].append(floor_level)
+
     # order subgrids by descending flatness
     subgrid_sort = sorted(subgrids, key=lambda x: x[4])
     return subgrid_sort
-    
-    
-        
-        

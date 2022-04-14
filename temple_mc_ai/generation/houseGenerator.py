@@ -1,6 +1,8 @@
 from __future__ import print_function
 from tracemalloc import start
 from gdpc import interface as INTF
+import analysis.heightAnalysis as heightAnalysis
+import random
 
 
 def build_house(start_x, start_y, start_z, end_x, end_y, end_z):
@@ -15,7 +17,9 @@ def build_house(start_x, start_y, start_z, end_x, end_y, end_z):
     wall_material_id = "cobblestone"
     window_material_id = "glass"
     roof_material_id = "oak_planks"
-    door_id = "air"
+    air_id = "air"
+    door_bottom_id = "spruce_door[facing=south, half=lower]"
+    door_top_id = "spruce_door[facing=south, half=upper]"
 
     roof_height = 5
 
@@ -70,11 +74,27 @@ def build_house(start_x, start_y, start_z, end_x, end_y, end_z):
                 INTF.placeBlock(end_x - (i - end_y), i, j, roof_material_id)
 
     # place a door
-    INTF.placeBlock(round((end_x - start_x) / 2) + start_x, start_y + 1, start_z, door_id)
-    INTF.placeBlock(round((end_x - start_x) / 2) + start_x, start_y + 2, start_z, door_id)
+    INTF.placeBlock(round((end_x - start_x) / 2) + start_x, start_y + 1, start_z, door_bottom_id)
+    INTF.placeBlock(round((end_x - start_x) / 2) + start_x, start_y + 2, start_z, door_top_id)
 
     INTF.placeBlock(round((end_x - start_x) / 2) + start_x - 1, start_y + 1, start_z, wall_material_id)
     INTF.placeBlock(round((end_x - start_x) / 2) + start_x - 1, start_y + 2, start_z, wall_material_id)
 
     INTF.placeBlock(round((end_x - start_x) / 2) + start_x + 1, start_y + 1, start_z, wall_material_id)
     INTF.placeBlock(round((end_x - start_x) / 2) + start_x + 1, start_y + 2, start_z, wall_material_id)
+
+
+def build_settlement(coord_array):
+    '''
+    Pass this function the flat_finder function and it will build multiple houses
+    '''
+
+    for i in range(6):
+        startx = coord_array[i][0] +  random.randint(-2, 2)
+        startz = coord_array[i][1] +  random.randint(-2, 2)
+        endx = coord_array[i][2] +  random.randint(-2, 2)
+        endz = coord_array[i][3] +  random.randint(-2, 2)
+        starty = coord_array[i][5]
+        endy = starty + 6
+
+        build_house(startx + 7, starty, startz + 7, endx - 7, endy, endz - 7)
