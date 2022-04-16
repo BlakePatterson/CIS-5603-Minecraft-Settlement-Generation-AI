@@ -66,7 +66,7 @@ if __name__ == '__main__':
         perimeterGenerator.buildPerimeter(heights, buildArea)
 
         # build village
-        houseGenerator.build_settlement(subgrid_sort)
+        door_coords = houseGenerator.build_settlement(subgrid_sort)
 
         # reload worldslice to account for changed blocks
         WORLDSLICE = WL.WorldSlice(STARTX, STARTZ,
@@ -75,7 +75,10 @@ if __name__ == '__main__':
         # reload heightmap
         heights = WORLDSLICE.heightmaps["MOTION_BLOCKING_NO_LEAVES"]
 
-        pathGenerator.build_path(STARTX + 5, STARTZ + 5, ENDX - 5, ENDZ - 5, heights, STARTX, STARTZ)
+        # build paths between all the houses
+        pathGenerator.build_paths_between_houses(door_coords, heights, STARTX, STARTZ, ENDX, ENDZ)
+
+        # pathGenerator.build_path(STARTX + 5, STARTZ + 5, ENDX - 5, ENDZ - 5, heights, STARTX, STARTZ)
 
         print("Done!")
         

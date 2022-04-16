@@ -88,6 +88,8 @@ def build_settlement(coord_array):
     Pass this function the flat_finder function and it will build multiple houses
     '''
 
+    door_coords = []
+
     for i in range(6):
         startx = coord_array[i][0] +  random.randint(-2, 2)
         startz = coord_array[i][1] +  random.randint(-2, 2)
@@ -96,4 +98,8 @@ def build_settlement(coord_array):
         starty = coord_array[i][5]
         endy = starty + random.randint(5, 8)
 
+        door_coords.append(((((endx - 5) - (startx + 5)) / 2) + (startx + 5), startz + 5 - 1))
+
         build_house(startx + 5, starty, startz + 5, endx - 5, endy, endz - 5)
+
+    return door_coords

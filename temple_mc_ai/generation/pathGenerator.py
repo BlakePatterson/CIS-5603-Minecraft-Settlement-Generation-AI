@@ -66,7 +66,7 @@ def get_height_difference(state1, state2, heights, height_start_x, height_start_
     return abs(heights[(state1.x - height_start_x, state1.z - height_start_z)] - heights[(state2.x - height_start_x, state2.z - height_start_z)])
 
 
-def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_start_z): 
+def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_start_z, height_end_x, height_end_z): 
     """
     Builds a simple path between the two specified points using A*
     """
@@ -76,7 +76,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
     print("Path starting at coordinates: (", start_x, ", ", start_z, ")")
     print("Path ending at coordinates: (", end_x, ", ", end_z, ")")
 
-    path_material_id = "cobblestone"
+    path_material_id = "grass_path"
 
     current_state = State(start_x, start_z)
 
@@ -127,7 +127,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving left
         # check whether moving left is a valid move
-        if current_state.z - 1 >= start_z:
+        if current_state.z - 1 >= height_start_z:
             # check whether left has already been explored
             left_is_explored = False
             for i in range(len(closed_set)):
@@ -149,7 +149,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving right
         # check whether moving right is a valid move
-        if current_state.z + 1 <= end_z:
+        if current_state.z + 1 <= height_end_z:
             # check whether right has already been explored
             right_is_explored = False
             for i in range(len(closed_set)):
@@ -171,7 +171,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving up
         # check whether moving up is a valid move
-        if current_state.x - 1 >= start_x:
+        if current_state.x - 1 >= height_start_x:
             # check whether up has already been explored
             up_is_explored = False
             for i in range(len(closed_set)):
@@ -193,7 +193,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving down
         # check whether moving down is a valid move
-        if current_state.x + 1 <= end_x:
+        if current_state.x + 1 <= height_end_x:
             # check whether down has already been explored
             down_is_explored = False
             for i in range(len(closed_set)):
@@ -215,7 +215,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving up_left
         # check whether moving up_left is a valid move
-        if current_state.z - 1 >= start_z and current_state.x - 1 >= start_x:
+        if current_state.z - 1 >= height_start_z and current_state.x - 1 >= height_start_x:
             # check whether up_left has already been explored
             up_left_is_explored = False
             for i in range(len(closed_set)):
@@ -237,7 +237,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving up_right
         # check whether moving up_right is a valid move
-        if current_state.z + 1 <= end_z and current_state.x - 1 >= start_x:
+        if current_state.z + 1 <= height_end_z and current_state.x - 1 >= height_start_x:
             # check whether up_right has already been explored
             up_right_is_explored = False
             for i in range(len(closed_set)):
@@ -259,7 +259,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving down_left
         # check whether moving down_left is a valid move
-        if current_state.z - 1 >= start_z and current_state.x + 1 <= end_x:
+        if current_state.z - 1 >= height_start_z and current_state.x + 1 <= height_end_x:
             # check whether down_left has already been explored
             down_left_is_explored = False
             for i in range(len(closed_set)):
@@ -281,7 +281,7 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
 
         # examine moving down_right
         # check whether moving down_right is a valid move
-        if current_state.z + 1 <= end_z and current_state.x + 1 <= end_x:
+        if current_state.z + 1 <= height_end_z and current_state.x + 1 <= height_end_x:
             # check whether down_right has already been explored
             down_right_is_explored = False
             for i in range(len(closed_set)):
@@ -331,4 +331,13 @@ def build_path(start_x, start_z, end_x, end_z, heights, height_start_x, height_s
     # print("End of path")
 
 
+def build_paths_between_houses(door_coords, heights, height_start_x, height_start_z, height_end_x, height_end_z):
+    """
+    Helper function to take in an array of coordinates and build paths between each pair
+    """
+    for i in range(len(door_coords) - 1):
+        startx, startz = door_coords[i]
+        endx, endz = door_coords[i + 1]
+
+        build_path(int(startx), int(startz), int(endx), int(endz) - 2, heights, height_start_x, height_start_z, height_end_x, height_end_z)
 
