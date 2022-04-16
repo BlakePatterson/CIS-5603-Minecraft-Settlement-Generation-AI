@@ -8,3 +8,4 @@ ProjectPlan/MCSGProjectPlan.bcf
 ProjectPlan/MCSGProjectPlan.blg
 ProjectPlan/MCSGProjectPlan.run.xml
 __pycache__/
+*.pyc
