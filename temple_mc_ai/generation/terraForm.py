@@ -1,5 +1,6 @@
 from gdpc import interface as INTF
 from gdpc import geometry as GEO
+import time
 
 treeAndLeaves = [
     'minecraft:oak_log',
@@ -67,6 +68,7 @@ def treeAnnihilator(heights, start_x, start_y, start_z, end_x, end_y, end_z):
     
     # put air in a 6x6 by height buffer around each tree
     for m in range(0, len(tree_tops)):
+        time.sleep(0.5)
         buffer = 3
         # place the first layer with no buffer
         INTF.placeBlock(tree_bottoms[m][0], tree_bottoms[m][1], tree_bottoms[m][2], "grass_block")

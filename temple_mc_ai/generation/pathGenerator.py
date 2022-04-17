@@ -3,6 +3,7 @@ from time import sleep
 from tracemalloc import start
 from xml.sax.handler import property_interning_dict
 from gdpc import interface as INTF
+import time
 
 
 class State:
@@ -338,6 +339,8 @@ def build_paths_between_houses(door_coords, heights, height_start_x, height_star
     for i in range(len(door_coords) - 1):
         startx, startz = door_coords[i]
         endx, endz = door_coords[i + 1]
+
+        time.sleep(0.5)
 
         build_path(int(startx), int(startz), int(endx), int(endz) - 2, heights, height_start_x, height_start_z, height_end_x, height_end_z)
 

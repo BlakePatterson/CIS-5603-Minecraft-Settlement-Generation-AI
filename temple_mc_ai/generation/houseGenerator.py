@@ -2,6 +2,7 @@ from __future__ import print_function
 from tracemalloc import start
 from gdpc import interface as INTF
 import random
+import time
 
 
 def build_house(start_x, start_y, start_z, end_x, end_y, end_z):
@@ -27,6 +28,8 @@ def build_house(start_x, start_y, start_z, end_x, end_y, end_z):
         for j in range(start_z, end_z + 1):
             INTF.placeBlock(i, start_y, j, floor_material_id)
 
+    time.sleep(0.25)
+
     # place pillars in the corners
     for i in range(start_y, end_y):
         INTF.placeBlock(start_x, i, start_z, pillar_material_id)
@@ -36,6 +39,7 @@ def build_house(start_x, start_y, start_z, end_x, end_y, end_z):
 
     # fill in the walls, adding windows at certain spots
     for i in range(start_y + 1, end_y):
+        time.sleep(0.25)
 
         # place the walls along each x coordinate
         for j in range(start_x + 1, end_x):
@@ -56,6 +60,7 @@ def build_house(start_x, start_y, start_z, end_x, end_y, end_z):
 
     # build the roof
     for i in range(end_y, end_y + roof_height):
+        time.sleep(0.25)
 
         # at the top level, build across all x and z values to fill in the roof
         if i == (end_y + roof_height) - 1:
@@ -99,6 +104,8 @@ def build_settlement(coord_array):
         endy = starty + random.randint(5, 8)
 
         door_coords.append(((((endx - 5) - (startx + 5)) / 2) + (startx + 5), startz + 5 - 1))
+
+        time.sleep(0.5)
 
         build_house(startx + 5, starty, startz + 5, endx - 5, endy, endz - 5)
 
