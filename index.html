@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Adaptive Procedural Gen. in Minecraft</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="style.css">
+
+<style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body>
+    <div class='about-text' id= 'about-text'>
+        <h1> Adaptive Procedural Generation in Minecraft </h1>
+        <h2> By: Michael Ward & Blake Patterson </h2>
+        <h3 class='about-subtitle'>Introduction</h3>
+            <div class='centered'>
+            <p>
+                Welcome to our Minecraft Settlement Generation AI project! This
+                was a project worked on by Michael Ward & Blake Patterson as a final 
+                project for Temple CIS 5603 during the semester of Spring 2022. The project 
+                itself is a Python script capable of building a settlement at any specified point 
+                in any Minecraft world, all while adapting to the environment 
+                around it in the most natural way possible. Our full project is available on
+                <a href='https://github.com/BlakePatterson/CIS-5603-Minecraft-Settlement-Generation-AI' target="_blank" rel="noopener noreferrer">Github</a>.
+            </p>
+            </div>
+        <h3 class='about-subtitle'>Examples</h3>
+            <div class='centered'>
+                <div class="img-box">
+                    <img src="images/village1.JPG" alt="village1">
+                    <img src="images/village2.JPG" alt="village2">
+                </div>
+            </div>
+        <h3 class='about-subtitle'>Installation</h3>
+            <div class='centered'>
+            <br/>
+                <h4>1. Install Minecraft</h4>
+                <p>The first step is to simply install Minecraft Java Edition. This 
+                can be done by going to the 
+                <a href='https://www.minecraft.net/en-us/download' target="_blank" rel="noopener noreferrer">Minecraft Download Page</a> 
+                & installing the version corresponding to your given operating system.</p>
+                <br/>
+                <h4>2. Install the interface mod</h4>
+                <p>This project makes use of the 
+                <a href='https://github.com/nilsgawlik/gdmc_http_interface' target="_blank" rel="noopener noreferrer">Generative Design Minecraft Challenge (GDMC) HTTP Interface</a> 
+                    mod in order to communicate between Python & Minecraft using HTTP requests. 
+                    This simply requires the installation of 
+                    <a href='https://files.minecraftforge.net/net/minecraftforge/forge/index_1.16.5.html' target="_blank" rel="noopener noreferrer">Forge version 1.16.5-36.1.0 </a>
+                    (a popular framework for using mods in Minecraft), the GDMC mod itself, 
+                    and some basic setup steps. For the full instructions go 
+                    <a href='https://github.com/nilsgawlik/gdmc_http_interface/wiki/Installation' target="_blank" rel="noopener noreferrer">here.</a></p>
+                <br/>
+                <h4>3. Install the Python Client</h4>
+                <p>Finally, this project makes use of the 
+                <a href='https://github.com/nilsgawlik/gdmc_http_client_python' target="_blank" rel="noopener noreferrer">Generative Design Python Client (GDPC)</a> 
+                    (developed by the same group who made the mod) 
+                    in order to steamline the process of making the necessary HTTP requests. 
+                    This can be done by running the following command in your terminal: <b style="background-color: lightgrey;">python3 -m pip install gdpc</b></p>
+            </div>
+        <h3 class='about-subtitle'>Usage</h3>
+            <div class='centered'>
+            <p>
+                With each of the three necessary components installed, 
+                all that is left is to run the project. To get the project on your 
+                local system, clone our github repository:
+                <br />
+                <br />
+                 <b style="background-color: lightgrey;"> git clone https://github.com/BlakePatterson/CIS-5603-Minecraft-Settlement-Generation-AI.git</b>
+                <br />
+                <br />
+                With the repository on your local machine, navigate to it 
+                using a terminal. Once in the repository folder, 
+                navigate into the folder where the script is stored 
+                using the following command: <b style="background-color: lightgrey;">cd temple_mc_ai </b>
+                <br />
+                <br />
+                As one final step before the script is executed, a Minecraft world 
+                must be up and running on your local machine for the script to work. 
+                Simply open Minecraft, launch the version containing the mods installed prior,
+                and create/open a world. With a Minecraft world open & a terminal 
+                opened to the necessary folder, the script can simply be run 
+                using the following command: <b style="background-color: lightgrey;">python temple_mc_ai.py</b>
+            </p>
+            <h4>Arguments</h4>
+                <p>There are multiple different optional arguments which can be passed to the script in order to alter how it executes:</p>
+                <li>-p: Takes no additional parameters & uses the player's location as a center point for the build area</li>
+                <li>-c: Takes 6 required integer parameters representing a pair of x, y, and z coordinates & uses the specified coordinates as the bounds for the build area</li>
+                <li>-t: Takes no additional parameters & will clear all trees & grass in the specified build area prior to placing any structures</li>
+                <li>-r: Takes one required integer parameter representing a radius in # of blocks & uses the specified radius as the radius of the build area (default is 128 blocks).</li>
+            </div> 
+            <br />
+            <br />
+    </div>
+</body>
+</html>

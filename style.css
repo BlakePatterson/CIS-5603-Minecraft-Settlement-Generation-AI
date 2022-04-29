@@ -1,0 +1,92 @@
+body{
+    background-image: url('images/dirt.png');
+}
+
+img{
+    max-width: 400px;
+    padding: 20px;
+}
+
+.img-box{
+    flex-direction: row;
+    display: flex;
+}
+
+.page-container{
+    height:100%;
+    width: 100vw;
+    position:absolute;
+    top: 70px;
+    left: 0px;
+    color: black;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+}
+
+
+.about-text{
+    height: 100%;
+    width: 90vw;
+    position:relative;
+    top: 0px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.65);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+
+.centered{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-subtitle{
+    padding-bottom: 3px;
+    display: block;
+    align-items: baseline;
+    position: relative;
+    text-decoration: none;
+}
+
+.about-subtitle::after{
+    background: black;
+    background: linear-gradient(to right, black 0%, black 40%, transparent 90%);  
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+}
+
+p{
+    line-height: 30px;
+    inline-size: 90%;
+}
+h4{
+    line-height: 30px;
+    inline-size: 90%; 
+}
+li{
+    line-height: 30px;
+    inline-size: 90%;  
+}
+
+.cite{
+    text-indent: -36px;
+    padding-left: 36px;
+    margin-left: 30px;
+    margin-right: 20px;
+    justify-content: left;
+    inline-size: 90%;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
