@@ -69,21 +69,51 @@ Abstract here
 \section{Introduction}
 \label{Introduction}
 
-	Minecraft is a sandbox video game, created by Mojang in 2009, where players explore and build in a procedurally generated 3D grid-like world with infinite terrain. The main game-play element of Minecraft consists of collecting various types of materials and using them to build tools and structures. The world is divided into 1x1x1 blocks which can vary in material, spawning location, and usability. Aside from the popularity of the base game, Minecraft has become well known for it's customization possibilities through a variety of open source application program interfaces. These application program interfaces allow players to change textures and color palettes, add new items, block types and enemies, and more. 
+	Minecraft is a sandbox video game, created by Mojang in 2009, where players explore and build in a procedurally generated 3D grid-like world with infinite terrain. The main game-play element of Minecraft consists of collecting various types of materials and using them to build tools and structures. The world is divided into 1x1x1 blocks which can vary in material, spawning location, and usability. Aside from the popularity of the base game, Minecraft has become well known for it's customization possibilities through a variety of open source application program interfaces. These application program interfaces allow players to modify textures and color palettes, add new items, block types and enemies, and more. 
+	
+\begin{figure}[H]%
+    \centering
+    \subfloat[\centering Grid]{{\includegraphics[width=0.4\textwidth]{axis} }}%
+    \qquad
+    \subfloat[\centering Developer Overlay]{{\includegraphics[width=0.5\textwidth]{f3} }}%
+    \caption{Observable Minecraft Environment}%
+    \label{fig:Observable Minecraft Environment}%
+\end{figure}
 
 The open source nature and in-game environment of Minecraft has also caught the attention of artificial intelligence researchers. The environment of Minecraft is ideal for research in AI because of the endless possibilities, from training an agent on simple tasks like searching for a specific object or material, to building complex structures or navigating obstacle courses. Since the environment is divided into a three-dimensional grid of equal sized cubes, it is also easy to measure and evaluate the performance of AI in Minecraft.
 
-This project is focused on the application of AI for Procedural Content Generation (PCG) within Minecraft. PCG is defined as the algorithmic creation of game content with limited or indirect user input \cite{shaker2016procedural}. Content in the context of PCG can be described as most of what can be contained within a game including maps, rules, textures, items, quests, music, characters, and more \cite{shaker2016procedural}. Many popular games have made use of PCG including Rogue, Dwarf Fortress, Diablo, Spore, Civilization, Spelunky, as well as Minecraft \cite{shaker2016procedural}. The usage of PCG varies from game to game and can range from fully autonomous game design, to  automating routine or common aspects of game design. One major critique of PCG in game design has to do with repetition and functionality; rule-based agents are likely to create good looking and functional content that looks similar, and search-based agents are likely to create more diverse content, but takes more time and resources to ensure that it is functional for the player \cite{green_organic_2019}.
+This project is focused on the application of AI for Procedural Content Generation (PCG) within Minecraft. PCG is defined as the algorithmic creation of game content with limited or indirect user input \cite{shaker2016procedural}. Content in the context of PCG can be described as most of what can be contained within a game including maps, rules, textures, items, quests, music, characters, and more \cite{shaker2016procedural}. Many popular games have made use of PCG including Rogue, Dwarf Fortress, Diablo, Spore, Civilization, Spelunky, as well as Minecraft itself \cite{shaker2016procedural}. The usage of PCG varies from game to game and can range from fully autonomous game design, to  automating routine or common aspects of game design. One major critique of PCG in game design has to do with repetition and functionality; rule-based agents are likely to create good looking and functional content that looks similar, and search-based agents are likely to create more diverse content, but takes more time and resources to ensure that it is functional for the player \cite{green_organic_2019}.
 
-Most instances of PCG in video games operate from a 'clean-state' where the generator does not have to consider interaction with preexisting in-game elements \cite{green_organic_2019}. Exploring PCG within Minecraft opens up a new challenge within AI, in which the goal is to produce a functional and believable village settlement that adapts to different environments within a Minecraft map \cite{salge_generative_2019}. Instead of generating a village on a clean slate, this problem restricts the generator with the presence of preexisting game elements and focuses on adaptive generation of artifacts \cite{green_organic_2019}. A map in Minecraft is made up of various biomes which contain different types of terrain, elevation gradients, fauna, and bodies of water. In order for a procedurally generated settlement to be functional and believable, it must be adaptive and able to build on top of and in response to elements that already exist in the Minecraft environment. The Generative Design in Minecraft (GDMC) AI settlement generation competition initially proposed this problem in 2018 \cite{salge_generative_2018}. GMDC has ran a yearly open competition for researchers and students to submit their algorithm, which is scored by a panel in terms of the algorithms adaptability and functionality \cite{fridh_settlement_nodate}. 
+Most instances of PCG in video games operate from a 'clean-state' where the generator does not have to consider interaction with preexisting in-game elements \cite{green_organic_2019}. Exploring PCG within Minecraft opens up a new challenge within AI, in which the goal is to produce a functional and believable village settlement that adapts to different environments within a Minecraft map \cite{salge_generative_2019}. Instead of generating a village on a clean slate, this problem requires the generator to account for the presence of preexisting game elements and focuses on adaptive generation of artifacts \cite{green_organic_2019}. A map in Minecraft is made up of various biomes which contain different types of terrain, elevation gradients, fauna, and bodies of water. In order for a procedurally generated settlement to be functional and believable, it must be adaptive and able to build on top of and in response to elements that already exist in the Minecraft environment. The Generative Design in Minecraft (GDMC) AI settlement generation competition initially proposed this problem in 2018 \cite{salge_generative_2018}. GMDC has ran a yearly open competition for researchers and students to submit their algorithm, which is scored by a panel in terms of the algorithms adaptability and functionality \cite{fridh_settlement_nodate}. 
 
-We propose to develop a Procedural Content Generation AI that is capable of generating a functional and believable Minecraft settlement, which is adaptive to varying environmental factors. Based on our first review of literature, it is apparent that developing multiple different algorithms to handle individual pieces of the problem has led to better outcomes in previous research. For example, iterations of the A* algorithm have been successful in creating road networks between houses within the settlements. For other parts of the problem such as terrain analysis and building generation, different approaches will need to be employed that require more research. In the tasks and timetable sections, we lay out our current expectations for what steps will be needed and the order of steps.
+We propose to develop a Procedural Content Generation AI that is capable of generating a functional and believable Minecraft settlement, which is adaptive to varying environmental factors. Based on our review of literature, it is apparent that developing multiple different algorithms to handle individual pieces of the problem has led to better outcomes in previous research. 
 
 
 \section{Related Work}
 \label{Related Work}
 
-Related work here
+\subsection{PCG in Games}
+
+Procedural generation of dungeons \cite{van2013procedural}.
+
+Survey of pcg dungeon creations \cite{viana2019survey}.
+
+Search based procedural content generation \cite{togelius2011search}.
+
+Declarative procedural generation of architecture with semantic architectural profiles \cite{van2020declarative}.
+
+Procedural content generation via reinforcement learning \cite{khalifa2020pcgrl}.
+
+
+\subsection{PCG in Minecraft}
+
+Multi agent settlement gen in minecraft \cite{esko2021multi}.
+
+World GAN \cite{awiszus2021world}.
+
+Growing artefacts and machines with neural cellular automata in minecraft \cite{sudhakaran2021growing}.
+
+Green et al. generate floor plans using a constrained growth algorithm and cellular automata \cite{green_organic_2019}.
 
 \section{Methodology}
 \label{Methodology}
@@ -117,7 +147,9 @@ Talk about house building
 
 
 \section{Acknowledgments}
-\section{Acknowledgments}
+\label{Acknowledgments}
+
+We'd like to thank the contributors and maintainers of both the \href{https://github.com/nilsgawlik/gdmc_http_interface}{Minecraft HTTP Interface Mod} and \href{https://github.com/nilsgawlik/gdmc_http_client_python}{Generative Design Python Client}: Nils Gawlik, Claus Aranha, Mayank Jain, and Flashing-Blinkenlights. This project would not be possible without the tools they built that allow for interacting with Minecraft via Python scripts.
 
 \section{References}
 \label{references}
