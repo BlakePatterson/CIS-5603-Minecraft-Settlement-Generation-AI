@@ -185,7 +185,11 @@ Once the height map has been searched for the presence of wood blocks, the 3D sp
 
 \subsection{Plot Analysis}
 
-Talk about plot analysis
+After clearing the designated build area of trees, it was necessary to compute how buildings and structures should be distributed across the build area. The distribution of buildings is a key piece of the problem that we want to solve, which is determining how a procedurally generated village should adapt to various randomly selected terrain. For this problem we also applied a search-based approach, using a fitness/evaluation function which grades the suitability of different locations in the build area for the purpose of house building.
+
+Our plot analysis algorithm divides the randomly selected build area into subdivisions that are based on the size of the total build area. For each subdivision, it generates a height map \& calculates the standard deviation of height within each respective subdivision. From here, the fitness function uses the standard deviations of height to evaluate which subdivisions are suitable for building houses on, with a preference for locations with low standard deviation of heights.
+
+This algorithm could be further improved by adding additional vectors to the fitness function. Some vectors which we think could be useful to include are the percentage of water present in subdivision \& distance to the nearest body of water from subdivision centroid. These vectors could help the fitness function to avoid building in areas with small patches of water \& also be set to build either near or far from water sources such as rivers or ponds. Another problem that our current algorithm runs into is that sometimes it will unnaturally place one building far away from the main grouping of buildings - this can happen if there's a hill that has a small flat area on top of it, while the rest of the area is relatively flat. This could be solved by calculating the height gradient of the entire build area \& tuning the fitness function to prefer placing buildings in the same gradient of the build area.
 
 \subsection{House Building}
 
