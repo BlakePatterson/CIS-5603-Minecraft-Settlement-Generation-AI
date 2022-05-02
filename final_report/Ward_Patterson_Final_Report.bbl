@@ -1,0 +1,728 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{van2020declarative}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=ae72ec5f31f56c70b3b8f380fdb41cf8}{%
+           family={Aanholt},
+           familyi={A\bibinitperiod},
+           given={Levi},
+           giveni={L\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=1d3f4766060649d522cb73a599ad27c5}{%
+           family={Bidarra},
+           familyi={B\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3bf86022b5fe157fa04d8e3338d19c11}
+      \strng{fullhash}{3bf86022b5fe157fa04d8e3338d19c11}
+      \strng{bibnamehash}{3bf86022b5fe157fa04d8e3338d19c11}
+      \strng{authorbibnamehash}{3bf86022b5fe157fa04d8e3338d19c11}
+      \strng{authornamehash}{3bf86022b5fe157fa04d8e3338d19c11}
+      \strng{authorfullhash}{3bf86022b5fe157fa04d8e3338d19c11}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2020 IEEE Conference on Games (CoG)}
+      \field{title}{Declarative procedural generation of architecture with semantic architectural profiles}
+      \field{year}{2020}
+      \field{pages}{351\bibrangedash 358}
+      \range{pages}{8}
+    \endentry
+    \entry{awiszus2021world}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=a4a748f5d0d3465fcf3614168f93cb2e}{%
+           family={Awiszus},
+           familyi={A\bibinitperiod},
+           given={Maren},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1c34a6c4d05b21a78a3af1560c65ae73}{%
+           family={Schubert},
+           familyi={S\bibinitperiod},
+           given={Frederik},
+           giveni={F\bibinitperiod}}}%
+        {{hash=0b5e0c497df82f8933f6b72c99a8b86d}{%
+           family={Rosenhahn},
+           familyi={R\bibinitperiod},
+           given={Bodo},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{cf2eb61087582af43360df0608146a31}
+      \strng{fullhash}{cf2eb61087582af43360df0608146a31}
+      \strng{bibnamehash}{cf2eb61087582af43360df0608146a31}
+      \strng{authorbibnamehash}{cf2eb61087582af43360df0608146a31}
+      \strng{authornamehash}{cf2eb61087582af43360df0608146a31}
+      \strng{authorfullhash}{cf2eb61087582af43360df0608146a31}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2021 IEEE Conference on Games (CoG)}
+      \field{title}{World-GAN: a Generative Model for Minecraft Worlds}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+    \endentry
+    \entry{esko2021multi}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=8373b6da35c5bb2f9dbf92680dc8440d}{%
+           family={Esko},
+           familyi={E\bibinitperiod},
+           given={Albin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=928914c00fbeb9d0b24083555a3dbcba}{%
+           family={Fritiofsson},
+           familyi={F\bibinitperiod},
+           given={Johan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{13fcaf7c9130f0d6e507d1cef7c048a2}
+      \strng{fullhash}{13fcaf7c9130f0d6e507d1cef7c048a2}
+      \strng{bibnamehash}{13fcaf7c9130f0d6e507d1cef7c048a2}
+      \strng{authorbibnamehash}{13fcaf7c9130f0d6e507d1cef7c048a2}
+      \strng{authornamehash}{13fcaf7c9130f0d6e507d1cef7c048a2}
+      \strng{authorfullhash}{13fcaf7c9130f0d6e507d1cef7c048a2}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Multi-Agent Based Settlement Generation In Minecraft}
+      \field{year}{2021}
+    \endentry
+    \entry{fridh_settlement_nodate}{article}{}
+      \name{author}{2}{}{%
+        {{hash=967e59d0c5b2bfbe5b7bec4c65030aa6}{%
+           family={Fridh},
+           familyi={F\bibinitperiod},
+           given={Marcus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5afc199854166358b545339d0def6afa}{%
+           family={Sy},
+           familyi={S\bibinitperiod},
+           given={Fredrik},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{0d14becfe622072848dbb97461535450}
+      \strng{fullhash}{0d14becfe622072848dbb97461535450}
+      \strng{bibnamehash}{0d14becfe622072848dbb97461535450}
+      \strng{authorbibnamehash}{0d14becfe622072848dbb97461535450}
+      \strng{authornamehash}{0d14becfe622072848dbb97461535450}
+      \strng{authorfullhash}{0d14becfe622072848dbb97461535450}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper explores graph grammar and constructive solutions for settlement generation in Minecraft. It uses graph grammar to flatten parts of the surface in order to increase the space for the buildings. Buildings are then generated with a constructive solution that follows a step-by-step model where different parts of the building are created in a certain order. Different parts include the shape of the foundation itself, the walls, the roof and the furniture. The algorithm picks which blocks to use on different parts of the house through an object called district palette. The buildings are divided up into areas called districts, where all the houses within the district follow a similar aesthetic style. The goal is to compare our solution with existing solutions from the Generative Design in Minecraft ({GDMC}) competition to see how it holds up against the other submissions. To evaluate, a user study was performed where each jury has to score four criteria: adaptivity, functionality, evocative narrative, and aesthetics. The results show that the solution had a strong aesthetics but fell behind in adaptivity, functionality, and evocative narrative. Most of it was due to not being able to generate different structures, and not cleaning up the trees around the buildings and the roads.}
+      \field{langid}{english}
+      \field{title}{Settlement Generation in Minecraft}
+      \field{pages}{55}
+      \range{pages}{1}
+      \verb{file}
+      \verb Fridh and Sy - Settlement Generation in Minecraft.pdf:Z\:\\Documents\\zotero\\directory\\storage\\L8K9IVA8\\Fridh and Sy - Settlement Generation in Minecraft.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{green_organic_2019}{article}{}
+      \name{author}{3}{}{%
+        {{hash=db70cf2978895cc7b9e9d8febc794f7c}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Michael\bibnamedelima Cerny},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=e1fc0784a108fc2e8c5c26f46d6f741c}{%
+           family={Salge},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=cbd110b21df9b90cd72ce148aa04de7f}{%
+           family={Togelius},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c726c733efc6e6f44988eb4b8ef45fcd}
+      \strng{fullhash}{c726c733efc6e6f44988eb4b8ef45fcd}
+      \strng{bibnamehash}{c726c733efc6e6f44988eb4b8ef45fcd}
+      \strng{authorbibnamehash}{c726c733efc6e6f44988eb4b8ef45fcd}
+      \strng{authornamehash}{c726c733efc6e6f44988eb4b8ef45fcd}
+      \strng{authorfullhash}{c726c733efc6e6f44988eb4b8ef45fcd}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper presents a method for generating floor plans for structures in Minecraft (Mojang 2009). Given a 3D space, it will autogenerate a building to fill that space using a combination of constrained growth and cellular automata. The result is a series of organic-looking buildings complete with rooms, windows, and doors connecting them. The method is applied to the Generative Design in Minecraft ({GDMC}) competition [24] to auto-generate buildings in Minecraft, and the results are discussed.}
+      \field{day}{11}
+      \field{eprinttype}{arxiv}
+      \field{journaltitle}{{arXiv}:1906.05094 [cs]}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{title}{Organic Building Generation in Minecraft}
+      \field{urlday}{24}
+      \field{urlmonth}{2}
+      \field{urlyear}{2022}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{eprint}
+      \verb 1906.05094
+      \endverb
+      \verb{file}
+      \verb Green et al. - 2019 - Organic Building Generation in Minecraft.pdf:Z\:\\Documents\\zotero\\directory\\storage\\GMK7W2XD\\Green et al. - 2019 - Organic Building Generation in Minecraft.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1906.05094
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1906.05094
+      \endverb
+      \keyw{Computer Science - Human-Computer Interaction}
+    \endentry
+    \entry{herve_comparing_2021}{article}{}
+      \name{author}{2}{}{%
+        {{hash=db09558d7cc879348baac1cbd7a31173}{%
+           family={Hervé},
+           familyi={H\bibinitperiod},
+           given={Jean-Baptiste},
+           giveni={J\bibinithyphendelim B\bibinitperiod}}}%
+        {{hash=e1fc0784a108fc2e8c5c26f46d6f741c}{%
+           family={Salge},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{70bf6f16c9f58f32c6a41646754322f2}
+      \strng{fullhash}{70bf6f16c9f58f32c6a41646754322f2}
+      \strng{bibnamehash}{70bf6f16c9f58f32c6a41646754322f2}
+      \strng{authorbibnamehash}{70bf6f16c9f58f32c6a41646754322f2}
+      \strng{authornamehash}{70bf6f16c9f58f32c6a41646754322f2}
+      \strng{authorfullhash}{70bf6f16c9f58f32c6a41646754322f2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{There are a range of metrics that can be applied to the artifacts produced by procedural content generation, and several of them come with qualitative claims. In this paper, we adapt a range of existing {PCG} metrics to generated Minecraft settlements, develop a few new metrics inspired by {PCG} literature, and compare the resulting measurements to existing human evaluations. The aim is to analyze how those metrics capture human evaluation scores in different categories, how the metrics generalize to another game domain, and how metrics deal with more complex artifacts. We provide an exploratory look at a variety of metrics and provide an information gain and several correlation analyses. We found some relationships between human scores and metrics counting specific elements, measuring the diversity of blocks and measuring the presence of crafting materials for the present complex blocks.}
+      \field{day}{6}
+      \field{eprinttype}{arxiv}
+      \field{journaltitle}{{arXiv}:2107.02457 [cs]}
+      \field{langid}{english}
+      \field{month}{7}
+      \field{title}{Comparing {PCG} metrics with Human Evaluation in Minecraft Settlement Generation}
+      \field{urlday}{24}
+      \field{urlmonth}{2}
+      \field{urlyear}{2022}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{eprint}
+      \verb 2107.02457
+      \endverb
+      \verb{file}
+      \verb Hervé and Salge - 2021 - Comparing PCG metrics with Human Evaluation in Min.pdf:Z\:\\Documents\\zotero\\directory\\storage\\E93MEN6S\\Hervé and Salge - 2021 - Comparing PCG metrics with Human Evaluation in Min.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2107.02457
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2107.02457
+      \endverb
+      \keyw{Computer Science - Artificial Intelligence}
+    \endentry
+    \entry{khalifa2020pcgrl}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=8cf60c4d9250095feca7d9e907cf7f45}{%
+           family={Khalifa},
+           familyi={K\bibinitperiod},
+           given={Ahmed},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4505e041f77b137101094a2522aed23c}{%
+           family={Bontrager},
+           familyi={B\bibinitperiod},
+           given={Philip},
+           giveni={P\bibinitperiod}}}%
+        {{hash=495f1f7321ab1541320d57f92a26ae86}{%
+           family={Earle},
+           familyi={E\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=cbd110b21df9b90cd72ce148aa04de7f}{%
+           family={Togelius},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{6ed30a9d10c99ecd96ef316c7fef7ff9}
+      \strng{fullhash}{ff020027ac0762da6abd909bbc870363}
+      \strng{bibnamehash}{6ed30a9d10c99ecd96ef316c7fef7ff9}
+      \strng{authorbibnamehash}{6ed30a9d10c99ecd96ef316c7fef7ff9}
+      \strng{authornamehash}{6ed30a9d10c99ecd96ef316c7fef7ff9}
+      \strng{authorfullhash}{ff020027ac0762da6abd909bbc870363}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment}
+      \field{number}{1}
+      \field{title}{Pcgrl: Procedural content generation via reinforcement learning}
+      \field{volume}{16}
+      \field{year}{2020}
+      \field{pages}{95\bibrangedash 101}
+      \range{pages}{7}
+    \endentry
+    \entry{salge_generative_2018}{article}{}
+      \name{author}{4}{}{%
+        {{hash=e1fc0784a108fc2e8c5c26f46d6f741c}{%
+           family={Salge},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=db70cf2978895cc7b9e9d8febc794f7c}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Michael\bibnamedelima Cerny},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=db343ae9925145ebadccf960a7d73b07}{%
+           family={Canaan},
+           familyi={C\bibinitperiod},
+           given={Rodrigo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=cbd110b21df9b90cd72ce148aa04de7f}{%
+           family={Togelius},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{fullhash}{17a4fe87c6676a0509c817aa3a6475ba}
+      \strng{bibnamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authorbibnamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authornamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authorfullhash}{17a4fe87c6676a0509c817aa3a6475ba}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper introduces the settlement generation competition for Minecraft, the first part of the Generative Design in Minecraft challenge. The settlement generation competition is about creating Artificial Intelligence ({AI}) agents that can produce functional, aesthetically appealing and believable settlements adapted to a given Minecraft map — ideally at a level that can compete with human created designs. The aim of the competition is to advance procedural content generation for games, especially in overcoming the challenges of adaptive and holistic {PCG}. The paper introduces the technical details of the challenge, but mostly focuses on what challenges this competition provides and why they are scientifically relevant.}
+      \field{day}{7}
+      \field{eprinttype}{arxiv}
+      \field{journaltitle}{Proceedings of the 13th International Conference on the Foundations of Digital Games}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{title}{Generative Design in Minecraft ({GDMC}), Settlement Generation Competition}
+      \field{urlday}{24}
+      \field{urlmonth}{2}
+      \field{urlyear}{2022}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 10}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/3235765.3235814
+      \endverb
+      \verb{eprint}
+      \verb 1803.09853
+      \endverb
+      \verb{file}
+      \verb Salge et al. - 2018 - Generative Design in Minecraft (GDMC), Settlement .pdf:Z\:\\Documents\\zotero\\directory\\storage\\3KH6GVJT\\Salge et al. - 2018 - Generative Design in Minecraft (GDMC), Settlement .pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1803.09853
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1803.09853
+      \endverb
+      \keyw{Computer Science - Artificial Intelligence,Computer Science - Computers and Society}
+    \endentry
+    \entry{salge_generative_2019}{article}{}
+      \name{author}{5}{}{%
+        {{hash=e1fc0784a108fc2e8c5c26f46d6f741c}{%
+           family={Salge},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=7e805e55944db01b4b80590881590316}{%
+           family={Guckelsberger},
+           familyi={G\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=db70cf2978895cc7b9e9d8febc794f7c}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Michael\bibnamedelima Cerny},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=db343ae9925145ebadccf960a7d73b07}{%
+           family={Canaan},
+           familyi={C\bibinitperiod},
+           given={Rodrigo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=cbd110b21df9b90cd72ce148aa04de7f}{%
+           family={Togelius},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{fullhash}{8d80f46ca560eb08106a7a72da443639}
+      \strng{bibnamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authorbibnamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authornamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authorfullhash}{8d80f46ca560eb08106a7a72da443639}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{We introduce the Chronicle Challenge as an optional addition to the Settlement Generation Challenge in Minecraft. One of the foci of the overall competition is adaptive procedural content generation ({PCG}), an arguably under-explored problem in computational creativity. In the base challenge, participants must generate new settlements that respond to and ideally interact with existing content in the world, such as the landscape or climate. The goal is to understand the underlying creative process, and to design better {PCG} systems. The Chronicle Challenge in particular focuses on the generation of a narrative based on the history of a generated settlement, expressed in natural language. We discuss the unique features of the Chronicle Challenge in comparison to other competitions, clarify the characteristics of a chronicle eligible for submission and describe the evaluation criteria. We furthermore draw on simulationbased approaches in computational storytelling as examples to how this challenge could be approached.}
+      \field{day}{14}
+      \field{eprinttype}{arxiv}
+      \field{journaltitle}{{arXiv}:1905.05888 [cs]}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{shorttitle}{Generative Design in Minecraft}
+      \field{title}{Generative Design in Minecraft: Chronicle Challenge}
+      \field{urlday}{24}
+      \field{urlmonth}{2}
+      \field{urlyear}{2022}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{eprint}
+      \verb 1905.05888
+      \endverb
+      \verb{file}
+      \verb Salge et al. - 2019 - Generative Design in Minecraft Chronicle Challeng.pdf:Z\:\\Documents\\zotero\\directory\\storage\\K7A659XD\\Salge et al. - 2019 - Generative Design in Minecraft Chronicle Challeng.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1905.05888
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1905.05888
+      \endverb
+      \keyw{Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Computers and Society}
+    \endentry
+    \entry{salge_ai_2020}{article}{}
+      \name{author}{9}{}{%
+        {{hash=e1fc0784a108fc2e8c5c26f46d6f741c}{%
+           family={Salge},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=db70cf2978895cc7b9e9d8febc794f7c}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Michael\bibnamedelima Cerny},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=db343ae9925145ebadccf960a7d73b07}{%
+           family={Canaan},
+           familyi={C\bibinitperiod},
+           given={Rodrigo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=ebae4383a3f7b0fbb06946a911051fbd}{%
+           family={Skwarski},
+           familyi={S\bibinitperiod},
+           given={Filip},
+           giveni={F\bibinitperiod}}}%
+        {{hash=36c9e2b07cd5a5b6de6926ecb284d567}{%
+           family={Fritsch},
+           familyi={F\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod}}}%
+        {{hash=120f66ef9d2f94110e01d34aafbcb90d}{%
+           family={Brightmoore},
+           familyi={B\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2d21f8d38521af85ff0394affcfa5397}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Shaofang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=11863921fa05aeb2bb1cd1144d381f14}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={Changxing},
+           giveni={C\bibinitperiod}}}%
+        {{hash=cbd110b21df9b90cd72ce148aa04de7f}{%
+           family={Togelius},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{fullhash}{010f682230c891a7172fe9bb76b02d66}
+      \strng{bibnamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authorbibnamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authornamehash}{9c974343f0b9161de4319bcf2cda4c22}
+      \strng{authorfullhash}{010f682230c891a7172fe9bb76b02d66}
+      \field{extraname}{3}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This article outlines what we learned from the ﬁrst year of the {AI} Settlement Generation Competition in Minecraft, a competition about producing {AI} programs that can generate interesting settlements in Minecraft for an unseen map. This challenge seeks to focus research into adaptive and holistic procedural content generation. Generating Minecraft towns and villages given existing maps is a suitable task for this, as it requires the generated content to be adaptive, functional, evocative and aesthetic at the same time. Here, we present the results from the ﬁrst iteration of the competition. We discuss the evaluation methodology, present the diﬀerent technical approaches by the competitors, and outline the open problems.}
+      \field{issn}{0933-1875, 1610-1987}
+      \field{journaltitle}{{KI} - Künstliche Intelligenz}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{number}{1}
+      \field{shortjournal}{Künstl Intell}
+      \field{shorttitle}{The {AI} Settlement Generation Challenge in Minecraft}
+      \field{title}{The {AI} Settlement Generation Challenge in Minecraft: First Year Report}
+      \field{urlday}{24}
+      \field{urlmonth}{2}
+      \field{urlyear}{2022}
+      \field{volume}{34}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \field{pages}{19\bibrangedash 31}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1007/s13218-020-00635-0
+      \endverb
+      \verb{file}
+      \verb Salge et al. - 2020 - The AI Settlement Generation Challenge in Minecraf.pdf:Z\:\\Documents\\zotero\\directory\\storage\\UMB4NP7S\\Salge et al. - 2020 - The AI Settlement Generation Challenge in Minecraf.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/s13218-020-00635-0
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s13218-020-00635-0
+      \endverb
+    \endentry
+    \entry{shaker2016procedural}{book}{}
+      \name{author}{3}{}{%
+        {{hash=ae1fe57aa4583addaa565aa16bfea22b}{%
+           family={Shaker},
+           familyi={S\bibinitperiod},
+           given={Noor},
+           giveni={N\bibinitperiod}}}%
+        {{hash=cbd110b21df9b90cd72ce148aa04de7f}{%
+           family={Togelius},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f0a3a62cf62a96f28c7fba0e3e16283b}{%
+           family={Nelson},
+           familyi={N\bibinitperiod},
+           given={Mark\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f94d337436520f5209d3360e69b11bc0}
+      \strng{fullhash}{f94d337436520f5209d3360e69b11bc0}
+      \strng{bibnamehash}{f94d337436520f5209d3360e69b11bc0}
+      \strng{authorbibnamehash}{f94d337436520f5209d3360e69b11bc0}
+      \strng{authornamehash}{f94d337436520f5209d3360e69b11bc0}
+      \strng{authorfullhash}{f94d337436520f5209d3360e69b11bc0}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Procedural content generation in games}
+      \field{year}{2016}
+    \endentry
+    \entry{sudhakaran2021growing}{article}{}
+      \name{author}{7}{}{%
+        {{hash=8a131df15deb3f0518e3d45d0cc1ce34}{%
+           family={Sudhakaran},
+           familyi={S\bibinitperiod},
+           given={Shyam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=cd3fe84696d44b87a0cfe2a069b73eae}{%
+           family={Grbic},
+           familyi={G\bibinitperiod},
+           given={Djordje},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8d855652b335086610d0f14ec10c703f}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Siyan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f4a76e1d232f35c9520259db352fd25b}{%
+           family={Katona},
+           familyi={K\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ccd898b2f7b8c95f5e3635b97f29bc33}{%
+           family={Najarro},
+           familyi={N\bibinitperiod},
+           given={Elias},
+           giveni={E\bibinitperiod}}}%
+        {{hash=12f6aa8d3dd143377a2fc8f0ec737ac5}{%
+           family={Glanois},
+           familyi={G\bibinitperiod},
+           given={Claire},
+           giveni={C\bibinitperiod}}}%
+        {{hash=ac3851112edf82ed4ab22929459e0622}{%
+           family={Risi},
+           familyi={R\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e8f1f4463d9d3799b5a459de7aeb9b67}
+      \strng{fullhash}{f91fe01c074957e890e2cb563b710c40}
+      \strng{bibnamehash}{e8f1f4463d9d3799b5a459de7aeb9b67}
+      \strng{authorbibnamehash}{e8f1f4463d9d3799b5a459de7aeb9b67}
+      \strng{authornamehash}{e8f1f4463d9d3799b5a459de7aeb9b67}
+      \strng{authorfullhash}{f91fe01c074957e890e2cb563b710c40}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2103.08737}
+      \field{title}{Growing 3d artefacts and functional machines with neural cellular automata}
+      \field{year}{2021}
+    \endentry
+    \entry{togelius2011search}{article}{}
+      \name{author}{4}{}{%
+        {{hash=cbd110b21df9b90cd72ce148aa04de7f}{%
+           family={Togelius},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cf368727b2920ced839da42cbd3e69a0}{%
+           family={Yannakakis},
+           familyi={Y\bibinitperiod},
+           given={Georgios\bibnamedelima N},
+           giveni={G\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=cd20c341249f4e0cd9cb16431e439823}{%
+           family={Stanley},
+           familyi={S\bibinitperiod},
+           given={Kenneth\bibnamedelima O},
+           giveni={K\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=d60ff0bc339644af2328be8f24d5f2d4}{%
+           family={Browne},
+           familyi={B\bibinitperiod},
+           given={Cameron},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{9103108141f54e1a3ee056c22bab568c}
+      \strng{fullhash}{251deac6926d3f445dda0e0b0529f217}
+      \strng{bibnamehash}{9103108141f54e1a3ee056c22bab568c}
+      \strng{authorbibnamehash}{9103108141f54e1a3ee056c22bab568c}
+      \strng{authornamehash}{9103108141f54e1a3ee056c22bab568c}
+      \strng{authorfullhash}{251deac6926d3f445dda0e0b0529f217}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Computational Intelligence and AI in Games}
+      \field{number}{3}
+      \field{title}{Search-based procedural content generation: A taxonomy and survey}
+      \field{volume}{3}
+      \field{year}{2011}
+      \field{pages}{172\bibrangedash 186}
+      \range{pages}{15}
+    \endentry
+    \entry{van2013procedural}{article}{}
+      \name{author}{3}{}{%
+        {{hash=ed8ef02fa63dd1b71d71fa6d21e8a859}{%
+           family={Van\bibnamedelimb Der\bibnamedelima Linden},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+        {{hash=88d33934e10fd64a746702e0c4172d1a}{%
+           family={Lopes},
+           familyi={L\bibinitperiod},
+           given={Ricardo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1d3f4766060649d522cb73a599ad27c5}{%
+           family={Bidarra},
+           familyi={B\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{0a98f3ba692a0ced1647742cd804e76c}
+      \strng{fullhash}{0a98f3ba692a0ced1647742cd804e76c}
+      \strng{bibnamehash}{0a98f3ba692a0ced1647742cd804e76c}
+      \strng{authorbibnamehash}{0a98f3ba692a0ced1647742cd804e76c}
+      \strng{authornamehash}{0a98f3ba692a0ced1647742cd804e76c}
+      \strng{authorfullhash}{0a98f3ba692a0ced1647742cd804e76c}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Computational Intelligence and AI in Games}
+      \field{number}{1}
+      \field{title}{Procedural generation of dungeons}
+      \field{volume}{6}
+      \field{year}{2013}
+      \field{pages}{78\bibrangedash 89}
+      \range{pages}{12}
+    \endentry
+    \entry{viana2019survey}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=d466fe44634fae31bed27582e5b6cd87}{%
+           family={Viana},
+           familyi={V\bibinitperiod},
+           given={Breno\bibnamedelima MF},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=05baa2e86fe4efc76310bd26081968fd}{%
+           family={Santos},
+           familyi={S\bibinitperiod},
+           given={Selan\bibnamedelima R},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           prefix={dos},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3979adf7448e099c66697d211962bbea}
+      \strng{fullhash}{3979adf7448e099c66697d211962bbea}
+      \strng{bibnamehash}{3979adf7448e099c66697d211962bbea}
+      \strng{authorbibnamehash}{3979adf7448e099c66697d211962bbea}
+      \strng{authornamehash}{3979adf7448e099c66697d211962bbea}
+      \strng{authorfullhash}{3979adf7448e099c66697d211962bbea}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2019 18th Brazilian Symposium on Computer Games and Digital Entertainment (SBGames)}
+      \field{title}{A survey of procedural dungeon generation}
+      \field{year}{2019}
+      \field{pages}{29\bibrangedash 38}
+      \range{pages}{10}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
