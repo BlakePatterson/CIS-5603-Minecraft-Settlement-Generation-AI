@@ -419,18 +419,68 @@ Luckily this did not occur all too often with our boundaries set to the entire b
 
 \subsection{Next Steps}
 
-1. add randomness to plot analysis
+Having examined the results of our project \& discussed the issues and limitations regarding our implementation, let us finish by discussing next steps. 
+There are countless things that could be done to improve this project, but instead of trying to exhaustively list those things we will focus on only the most notable improvements that we would believe noticeably make our project better. 
+We will be excluding any strict technical improvements as well \& focus only on improvements to the generated settlement (i.e., recreating the Python client to solve the issue of dropping HTTP requests is an obvious next step, but will not be discussed here as it does not improve the resulting settlement).
 
-2. additional terraforming step to flatten plots before placing houses
+Firstly, it would greatly improve the look of our settlements if we added more randomness to the plot analysis. 
+This was briefly touched upon earlier, but in short the current implementation of plot analysis will lead to grid style houses if run on perfectly flat land. 
+This is not inherently bad, and it could even be argued that the suburban look of this grid layout makes sense in some cases, but it frequently leads to unnatural looking settlements. 
+Given our goal of naturally adapting to the land, this is not ideal. 
+Thus, to improve this, we could add a hint of randomness to the plot analysis. 
+We would most likely do this by adding a sort of randomized tie breaking method between plots of equal flatness. 
+This would most likely solve the issue entirely, but if it did not we could even further randomize the plot analysis by having it run this tie breaking method between plots of similar flatness rather than just equal flatness. 
+Another aspect of plot analysis worth mentioning is the possibility of handling it using deep learning. 
+Building a neural network which takes in the height map of the build area as well as some other factors of the environment \& returns plot locations would not be out of the realm of possibility. 
+In fact, many would argue it would lead to better results. 
+We decided to explore other aspects of AI aside from machine learning for our project, but applying deep learning to plot analysis is a clear alternative worth trying out. 
 
-3. smart house building 
+The next improvement would be regarding terraforming. 
+More specifically, it would lead to much better looking settlements if we applied our terraforming method to more than just clearing trees. 
+As was seen in the resulting settlements, our terraforming implementation works perfectly. 
+It clears all of the trees in the build area leaving space to place houses \& paths, so there is no need to change the existing implementation. 
+Instead, we would most likely add a terraforming step to house building \& path building. 
+Regarding house building, we faced a big issue regarding houses being placed on uneven land. 
+Our plot analysis implementation would always pick the flattest land possible, but sometimes the flattest land was still very hilly or bumpy. 
+This would sometimes lead to houses which looked like they were partially floating or simply on land they should not be on. 
+To fix this, we could apply a slight terraforming step before placing each house: find the median height of the land under where the house is going to be, place \& destroy blocks in order to create a flat foundation for the house equal to this median height, and then place the house. 
+This would most likely fix our issue of semi-floating houses. 
+However, this could possibly lead to some land around the house coming up above floor level. 
+If this were to occur we could alleviate it by taking into account the land around the house when calculating the median height. 
+Regarding the paths, we faced an issue with not knowing when to terraform the land to create a path \& when to just find a way around. 
+In our current implementation we simply chose to always go around, but it would most likely lead to more natural looking paths if we were to apply some terraforming to our path building. 
+Considering the only occasion in which we would need to terraform would be when there is a steep incline or decline (steep referring to any difference in height greater than 1 block), it would most likely be best to decide whether or not to terraform based on the height of the incline/decline. 
+Finding the exact cutoff at which we should terraform vs. when we should go around would require testing, but for example we could start by choosing to terraform if there is only a 3 block difference in height or smaller and anything greater we could just choose to go around. 
+We could also simply choose to place blocks in front of us if there is a decline (i.e., create a downward ramp in front of the decline), and destroy blocks in front of us if there is an incline (i.e., mold an upward ramp out of the incline). 
+This would be the most simple implementation to start with, and we would be able to improve upon it after testing \& examining the results. 
 
-4. more structure to our paths / smart path placement
+Moving on, another thing we would like to improve upon is the house building. 
+Our current implementation of house building is fairly primitive because we chose to focus more on how the overall settlement was organized \& tied together (we did not care much about how each individual house looked).
+However, having implemented all the pieces necessary to tie a settlement together, it would make the overall settlement look much nicer \& more natural if each house had more detail to it. 
+Rather than just hardcode a prettier looking house, it would be best to implement a so-called smart house building method. 
+There are countless ways this could be done, so it is near impossible to just pick one, but we could attempt a cellular automata approach (i.e., a modified dungeon generator), a deep learning approach, a reinforcement learning approach, or even just a simple reasoning approach which takes into account numerous factors about the land and picks how to build the house based off of probabilities tied to those factors. 
+On top of improving the building methodology of the houses themselves, it would greatly improve the look of the resulting settlements if there were simply more types of structures to be built. 
+Even normal Minecraft villages have different types of houses, churches, farms, blacksmiths, etc., so it would only make sense for us to diversify the structures in our settlement. 
+At a minimum we would most likely start with implementing the same type of structures that Minecraft villages contain and then go from there. 
+One last thing we would need to handle, however, is when to place which type of settlement. 
+Just picking by random is not a terrible solution, but at the same time is not very intelligent and could lead to a settlement containing just farms. 
+Instead, we would most likely use some sort of reasoning system which takes in numerous factors of the environment to decide what type of structure to place on each plot. 
+For example, if the plot is on grass very close to a river in a plains biome, it would make sense to put a farm there.
+We could also take into account the existing settlement elements so far when placing more structures. 
+For example, if there is already a church and a blacksmith, there is most likely no need for a second church or a second blacksmith, so it would be a good bet to just place a new house. 
 
-5. deep neural networks
-
-6. more structures 
-
+Finally, we will wrap up by discussing possible improvements to our paths. 
+The main issue with our paths, which was introduced earlier, is that they sometimes create an unnatural looking, inefficient, interweaving network. 
+The goal here would be to create some sort of overall structure or set of guidelines for the paths to follow so that they connect nicely with each other rather than just connect each house without caring about the overall picture. 
+The immediate fix to this would be to construct a center point of the settlement (i.e., a little town center with a fountain, bench, etc.), and connect each house to that center point via a path. 
+This would be a good starting point, but it would not solve the problem in its entirety. 
+To further fix the issue, we could iterate through each structure, performing a distance calculation to determine the closest structure to build a path to. 
+For example, while there is some structure not connected to the network of paths, calculate another structure closest to the first structure and build a path between them. 
+Building the town center \& implementing this distance calculation would most likely solve the issue of paths that look unnatural \& inefficient. 
+If the problem is not entirely solved, however, there is one last thing we could implement. 
+Instead of only connecting structures to structures, we could connect paths to other paths. 
+For example, if there are two completely disconnected paths which connect two different pairs of structures, but there is a point where the two paths are closer than any of the structures are to each other, it would make the most sense to connect the paths via a subpath. 
+This would be much more complex, and we do not have an idea in mind as to how this would be accomplished, but it would be worth looking into if the first two methods do not entirely solve our problem. 
 
 \section{Acknowledgments}
 \label{Acknowledgments}
