@@ -253,14 +253,14 @@ This means we had to determine how to evaluate the cost of our path so far as we
 As it turns out, the most typical cost \& heuristic functions used in standard grid search problems worked incredibly well in Minecraft. 
 In short, the cost function was simply equal to how many blocks the path had stretched so far, and the heuristic function was equal to the Manhattan distance from the end of the path to the goal destination.
 More specifically, we calculated the Manhattan distance as $|x' - x| + |z' - z|$, where $(x, z)$ are the coordinates for the end of the current path \& $(x', z')$ are the coordinates for the goal destination.
-One might understandably ask why the vertical y coordinate is excluded, and it is simply because the resulting paths were better without it. 
+One might understandably ask why the vertical y coordinate is excluded, and the simple answer is that the resulting paths were better without it. 
 This is most likely because we did not ultimately want to traverse vertically all that often, and all that really mattered was the horizontal traversal of the path. 
 
 With the cost \& heuristic functions set up, there is only one thing left to determine: the boundaries of our path. 
 More specifically, where can A* look when determining where to place the path, or even more accurately, where can it not look? 
 This is where our implementation of A* had to become slightly modified from most. 
 See, most implementations of A* are concerned with two dimensional grids/planes of some sort, and they do not have to worry about a third, vertical dimension. 
-Simply ignoring the third dimension would not work though, as if we ran it normally it would lead to massive, immediate vertical jumps in the path which not only do not look natural, are non-functional. 
+Simply ignoring the third dimension would not work though, as if we ran it normally it would lead to massive, immediate vertical jumps in the path which not only do not look natural, but are also non-functional. 
 Also, simply restricting the path to only work in two dimensions is not only does not make sense theoretically since the player is entirely capable of moving vertically, but almost never works in practice since the land in Minecraft is rarely perfectly flat. 
 Thus, this led us to determine that the path should be able to move vertically, but only by one block at a time because any more and the player would not be able to traverse it. 
 This, unsurprisingly, worked very well and led to natural looking \& functional paths. 
@@ -285,11 +285,117 @@ All said \& done, this implementation of A* led to relatively natural looking \&
 
 \subsection{Results}
 
-Results here. 
+In the end, we were able to implement everything as described in the previous section within the allocated time frame. 
+There were definite issues faced during the implementation and not everything worked perfectly in the end, but that will be discussed later. 
+First off, let us examine two settlements generated from our program. 
 
-\subsection{Limitations}
+Here is a settlement generated on relatively flat terrain in a dense forest. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{village1}
+    \caption{Flat Dense Forest Settlement}
+    \label{fig:env}
+\end{figure}
 
-Limitations here. 
+There are multiple noteworthy aspects of this first settlement that can be taken away \& examined. 
+First of all, it is clear to see that the terraforming methodology worked perfectly. 
+The area in which the settlement was built (marked by the perimeter fence) was completely cleared of trees. 
+The next thing worth noting is the house placement. 
+This is much more subtle, but the plots at which the houses were placed make sense.
+Notice how no house was placed near the hill towards the left of the image. That is because it would not make sense to place a house on hilly terrain, and our program handled that as intended. 
+The next step of our program was building the houses, and there is not much to talk about here aside from the fact that the houses were built as expected. 
+Finally, we can take note of the paths. 
+In terms of hard requirements for a usable path, the paths our program generated meet all of them. 
+They reach the front door of every house, they are relatively flat, and they are efficient (i.e., they generally take the most direct path possible). 
+On top of that, the paths also look natural. 
+If you asked a random player if they thought another player built these paths, it would be reasonable of them to say yes, and that was what we were aiming for. 
+
+Next, here is a settlement generated on much more uneven land near a mountain \& river. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{village2}
+    \caption{Mountainous River Village}
+    \label{fig:env}
+\end{figure}
+
+This environment is clearly a much tougher one to build a settlement in, so let us examine how the same aspects from the previous settlement were handled in this one. 
+First off, terraforming was less of an issue here, but as you can see, it was still handled perfectly as there are no trees in the build area. 
+Secondly, the house placement was probably the biggest issue here. 
+It is almost impossible to perfectly place houses on this piece of land without completely tearing the land apart, so our program did the best it could to pick relatively flat pieces of land to place the houses. 
+With that in mind, the program did fairly well. 
+It did not place any houses on the river, it did not place any houses in the middle strip of land which was too hilly, and it did not place any houses in the far back piece of land which was far too hilly. 
+Moving onto the houses themselves, they were again built exactly as expected, so let us examine the paths. 
+This piece of land was much more of a test for our path methodology as it is far more hilly, but, as you can see, our program generated fairly natural looking \& functional paths yet again. 
+The paths clearly navigate the hills relatively easily, which is what we were aiming for with our implementation of A*. 
+There are two notable problems, however, and those are that one of the paths did not finish (in the top left of the image), and some of the paths reached the house but were multiple blocks below the front door of the house (making the house inaccessible). 
+
+\subsection{Issues \& Limitations}
+
+Having seen the results of our final program, let us examine the issues \& limitations faced along the way. 
+First we will start by discussing issues with the interface mod \& Python client, then move on to issues with our implementation of plot analysis \& how it connects with house building, and finally finish with issues regarding our implementation of path building. 
+Terraforming \& house building were implemented using simple yet fairly efficient \& accurate techniques, so there is not much to be discussed there (aside from how they could be improved, which will be discussed in next steps).
+
+The first major issue we faced had to do with the nature of the framework we used to communicate with Minecraft, the interface mod \& Python client. 
+As described earlier in this paper, this framework allows us to communicate with Minecraft through the use of HTTP requests (i.e., if we wanted to place a block in the world, we have to send a corresponding HTTP request for that to happen). 
+This is all great \& works perfectly in moderation, but it does not scale well as you start to perform more \& more operations. 
+More specifically, when we were just testing out the framework and building small structures like simple small houses, there were no issues. 
+However, as we progressed to building entire settlements containing multiple houses, it required many more HTTP requests to be sent back to back. 
+This led to one major problem: when too many HTTP requests were sent back to back, many of them would just be dropped leading to the corresponding operation not being completed. 
+In short, this meant that builds would just look incomplete (i.e., some trees would not be fully destroyed, there would be holes in some of the houses, etc.).
+The natural solution for most developers would just be to make the requests synchronous and if one returned with a bad or incomplete status, just repeat it. 
+We would agree, and we would have done this had we written the requests ourselves, but the Python client is not directly editable and does not handle the requests in this way. 
+In fact, the Python client does not directly allow for callbacks in any sense, you simply call a function such as placeBlock and hope it works. 
+Considering the Python client worked perfectly in every other aspect \& writing our own requests would be a fairly large task, we decided to go with a more temporary solution: simply making as few requests as possible and blocking the program very briefly between large batches of requests. 
+This solved the problem to a sufficient enough degree for us to finish, but if we were to have more time it would be ideal for us to write our own framework for sending the HTTP requests.
+
+Moving on, we will point out all notable issues with our implementation of plot analysis \& how it connects with house building. 
+The first notable issue is the lack of randomness \& naturalness to the plots. 
+More specifically, if run in the same area twice (or just run on perfectly flat land multiple times), it will pick the same pieces of land to put houses on. 
+This is obviously not an issue for pieces of land where there are only so many places to naturally put a house (like in the examples above), but on flat land this leads to "suburban" looking houses (i.e., houses lined up in a row \& column type layout). 
+Ideally, we would most likely add a hint of randomness to make the house placements look more natural in environments where houses could viably be placed anywhere, but seeing as our implementation handled natural, hilly environments very well it was not a big issue. 
+Another issue we faced had to do with when there were no pieces of flat land large enough to place a house on. 
+More specifically, the issue was our lack of handling this. 
+In its current version, our implementation will simply aim to put the houses on the flattest land possible, even if that land is not actually flat relative to the player. 
+Then, it would simply build the house on top of the highest point of that land. 
+If the part of the land in front of the door was lower than the highest point, then this would lead to the door being too high off the ground (as can be seen in the examples above). 
+On the other hand, if the land in front of the door was the highest point and the other land was lower, it would look like the house was only supported in the front (which is unnatural looking). 
+Ideally, we would have fixed this by having an additional terraforming step which further flattened plots which needed it. 
+Lastly, our house building methodology simply needed to be more diverse \& random. 
+At the moment, our program often led to nearly identical houses, all facing the same way. 
+This is not a huge issue \& has nothing to do with our main goal of adapting to the land as naturally as possible, but it is simply not very appealing. 
+
+Finally, we will discuss all notable issues with our implementation of path building. 
+The most notable issue has to do with the order of the paths. 
+To be more specific, the way each path is placed in the current version of this project is that the program connects house 1 \& 2, then 2 \& 3, then 3 \& 4, and so on. 
+This often times leads to fairly natural and efficient looking paths, so it is not an issue most of the time. 
+However, the problem is that sometimes it leads to interweaving networks of paths that do not look natural and simply do not make sense from a functional perspective. 
+Ideally, the paths should not just directly go between each house, but connect to each additional path in the most natural way possible. 
+Additionally, it should be possible for there to be a center point or intersection for the paths where ever it would make sense. 
+The next issue with our paths, which is much less noticeable in any of the settlements generated, has to do with the lack of terraforming. 
+More specifically, sometimes it would just make more sense to simply destroy or place some blocks in the land when there is a vertical gap rather than try and go around it. 
+The main limitation we faced regarding this was not knowing when it was better to destroy or place a block rather than going around, so we did not get to implementing this. 
+The only other main issue we had regarding path building was the possible search space for a path and how to handle when no possible path was found. 
+Regarding the search space, it was hard to determine what was too big and what was too small. 
+Too big and you would almost always find a possible path, but the run time would be terrible as it might try an absurd number of possibilities before picking a path (even after implementing the most efficient tie breaking method for A*).
+Too small and, while the run time would not be bad, it might not find a possible path even if there was one obvious to the player. 
+To solve this, the current version of the program simply uses the build area (marked by the perimeter fence) as the boundaries to the path builder, although this still led to issues on occasion. 
+Regarding when a possible path is not found, we chose to simply build the final state A* was in after terminating, but this led to wildly inefficient paths.  
+This is because our implementation of A* will not always necessarily terminate on the closest to optimal path it found if it could not find a complete path.
+Luckily this did not occur all too often with our boundaries set to the entire build area, although it is still an issue in the current version.  
+
+\subsection{Next Steps}
+
+1. add randomness to plot analysis
+
+2. additional terraforming step to flatten plots before placing houses
+
+3. smart house building 
+
+4. more structure to our paths / smart path placement
+
+5. deep neural networks
+
+6. more structures 
 
 \newpage
 
