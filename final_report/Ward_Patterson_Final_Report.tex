@@ -228,6 +228,10 @@ The rest of the functionality provided by the Python client can again be found i
 
 When testing our program, we quickly encountered an issue specific to Minecraft for this type of procedural village generation, trees. Trees in Minecraft can appear in almost any biome, \& can be densely populated or sparsely populated. Trying to place a building on an patch of land that already contains trees leads to various undesirable results, as seen in figure \ref{fig:tree}. Building on top of preexisting trees can lead to houses being filled with trees, trees poking out the tops of houses, \& sometimes even houses being placed on top of trees. Since our goal is to build a settlement in any randomized location within Minecraft, handling the presence of trees is a key factor of an adaptable village generator.
 
+This problem of adapting to existing structures is one unique to our project. As discussed previously, procedural content generation most typically operates on a clean slate. Since this problem is somewhat unique to our project, there is not an accepted methodology for handling preexisting tree structures. While this is a problem that any teams who submit or have submitted work to the GDMC competition would have to address, few teams have produced written work detailing their methodology.
+
+To solve this problem, we used our knowledge of trees \& the data structures that are accessible via the Python client to devise an algorithm that can efficiently locate \& remove trees that are present in a randomly selected build area. Trees in Minecraft have the same attributes as real-life trees; they grow straight up from the ground, are made of wood, \& typically have leaves surrounding the canopy. Trees in Minecraft are made specifically from wood blocks, which are solely found in the form of trees. With this knowledge, we could create an algorithm that searches the 3-dimensional space until it finds a wood block, then searches the y-coordinate space up \& down from that block until wood isn't found any more in either direction. This was our first approach, but it was computationally expensive. The typical build area size we tested on is 128 x 128 x 128 blocks, so at worst this algorithm would explore roughly 2 million blocks. To come up with a more efficient algorithm, we needed to find a better way to search the 3D space -  this was quite difficult as there is no maximum number or minimum number of trees in any given x,y,z boundaries within Minecraft. 
+
 \begin{figure}[H]%
     \centering
     \subfloat[\centering Trees in house]{{\includegraphics[width=0.4\textwidth]{tree1} }}%
@@ -237,9 +241,9 @@ When testing our program, we quickly encountered an issue specific to Minecraft 
     \label{fig:tree}%
 \end{figure}
 
-This problem of adapting to existing structures is one unique to our project. As discussed previously, procedural content generation most typically operates on a clean slate. Since this problem is somewhat unique to our project, there is not an accepted methodology for handling preexisting tree structures. While this is a problem that any teams who submit or have submitted work to the GDMC competition would have to address, few teams have produced written work detailing their methodology.
+In order to restrict the search space, we extracted a height map of the given build area using the GDMC Python client - which is a 2D array the size of the the x,z coordinate space that contains the highest y coordinate value (not containing air or leaves) at each x,z coordinate combination. See figure \ref{fig:height} for an example of a height map for an 8 x 8 area. Instead of searching potentially the entire 3D space, we could search the 2D height map for the presence of wood blocks instead, which would give us a starting node for each tree - the top block of each tree. Since the height map is the highest y coordinate in each x,z coordinate combination, we can assume that any given coordinate in a height map is the top of a tree if the coordinate contains a wood block.
 
-To solve this problem, we used our knowledge of trees \& the data structures that are accessible via the GDMC Python client to devise an algorithm that can efficiently locate \& remove trees that are present in a randomly selected build area. Trees in Minecraft have the same attributes as real-life trees; they grow straight up from the ground, are made of wood, \& typically have leaves surrounding the canopy. Trees in Minecraft are made specifically from wood blocks, which are solely found in the form of trees. With this knowledge, we could create an algorithm that searches the 3-dimensional space until it finds a wood block, then searches the y-coordinate space up \& down from that block until wood isn't found any more in either direction. This was our first approach, but it was computationally expensive. The typical build area size we tested on is 128 x 128 x 128 blocks, so at worst this algorithm would explore roughly 2 million blocks. To come up with a more efficient algorithm, we needed to find a better way to search the 3D space -  this was quite difficult as there is no maximum number or minimum number of trees in any given x,y,z boundaries within Minecraft. 
+Once the height map has been searched for the presence of wood blocks, the 3D space can be searched, using the tree top coordinates obtained from the height map search as starting nodes. Each node is expanded downwards until wood blocks are not found, giving us the full coordinate map of trees in the build area. An inverted conical buffer is applied to each tree's coordinate space to ensure the removal of leaves, and then the tree coordinates and buffer space are replaced with blank space. This search algorithm is much more efficient than the first search algorithm used, \& at worst searches roughly 16,000 blocks in a 128 x 128 x 128 build area.
 
 \begin{figure}[H]
 \centering
@@ -247,10 +251,6 @@ To solve this problem, we used our knowledge of trees \& the data structures tha
 \caption{Example of an 8 x 8 heightmap \cite{esko2021multi}}
 \label{fig:height}
 \end{figure}
-
-In order to restrict the search space, we extracted a height map of the given build area using the GDMC Python client - which is a 2D array the size of the the x,z coordinate space that contains the highest y coordinate value (not containing air or leaves) at each x,z coordinate combination. See figure \ref{fig:height} for an example of a height map for an 8 x 8 area. Instead of searching potentially the entire 3D space, we could search the 2D height map for the presence of wood blocks instead, which would give us a starting node for each tree - the top block of each tree. Since the height map is the highest y coordinate in each x,z coordinate combination, we can assume that any given coordinate in a height map is the top of a tree if the coordinate contains a wood block.
-
-Once the height map has been searched for the presence of wood blocks, the 3D space can be searched, using the tree top coordinates obtained from the height map search as starting nodes. Each node is expanded downwards until wood blocks are not found, giving us the full coordinate map of trees in the build area. An inverted conical buffer is applied to each tree's coordinate space to ensure the removal of leaves, and then the tree coordinates and buffer space are replaced with blank space. This search algorithm is much more efficient than the first search algorithm used, \& at worst searches roughly 16,000 blocks in a 128 x 128 x 128 build area.
 
 \subsection{Plot Analysis}
 
@@ -312,8 +312,6 @@ If it was not possible to reach the destination within these boundaries it would
 With all of these parameters \& rules in place, we simply had A* run and then place a chunk of blocks at each point along its determined path (as one block did not look natural enough). 
 Then, we set up a simple function which took in the coordinates of the front of each house \& built paths between each of the houses such that everything was interconnected. 
 All said \& done, this implementation of A* led to relatively natural looking \& functional paths. 
-
-\newpage
 
 \section{Discussion}
 \label{Discussion}
@@ -432,12 +430,13 @@ Luckily this did not occur all too often with our boundaries set to the entire b
 
 6. more structures 
 
-\newpage
 
 \section{Acknowledgments}
 \label{Acknowledgments}
 
 We'd like to thank the contributors and maintainers of both the \href{https://github.com/nilsgawlik/gdmc_http_interface}{Minecraft HTTP Interface Mod} and \href{https://github.com/nilsgawlik/gdmc_http_client_python}{Generative Design Python Client}: Nils Gawlik, Claus Aranha, Mayank Jain, and Flashing-Blinkenlights. This project would not be possible without the tools they built that allow for interacting with Minecraft via Python scripts.
+
+\newpage
 
 \section{References}
 \label{references}
