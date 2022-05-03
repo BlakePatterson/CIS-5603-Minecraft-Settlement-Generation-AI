@@ -63,14 +63,15 @@
 \section{Abstract}
 \label{Abstract}
 
-Abstract here
+Minecraft has been the focus of much AI research in past years. Most recently, interest has risen in procedural generation of settlements in Minecraft, largely due to a annual competition established in 2018 called the Generative Design in Minecraft Competition. Inspired by this recent research, we aim to develop a set of algorithms that are capable of building a realistic \& functional Minecraft settlement in a randomized location with previously unseen terrain. We utilized a variety of search-based algorithms to accomplish different goals, including a modified version of the A* algorithm for road-building \& a modified fitness function for analyzing plots of land. These algorithms communicate with Minecraft through the use of a HTTP server and Python client described on page \pageref{Methodology}. Our final product is capable of clearing trees \& grass, analyzing the best plots of land to build on, building houses, and connecting houses with a dynamic path. After several tests, it's evident that it handles various terrain quite well with few inconsistencies. Looking forward, we'd like to expand our methodology to allow for the creation of more varied \& intricate buildings: cellular automata or graph grammar seem to be good options for this. We also found that deep learning approaches haven't been explored much in this research area, but very recent work done using GANs look promising.
+
 
 \newpage
 
 \section{Introduction}
 \label{Introduction}
 
-	Minecraft is a sandbox video game, created by Mojang in 2009, where players explore and build in a procedurally generated 3D grid-like world with infinite terrain. The main game-play element of Minecraft consists of collecting various types of materials and using them to build tools and structures. The world is divided into 1x1x1 blocks which can vary in material, spawning location, and usability. Aside from the popularity of the base game, Minecraft has become well known for it's customization possibilities through a variety of open source application program interfaces. These application program interfaces allow players to modify textures and color palettes, add new items, block types and enemies, and more. 
+	Minecraft is a sandbox video game, created by Mojang in 2009, where players explore and build in a procedurally generated 3D grid-like world with infinite terrain. The main game-play element of Minecraft consists of collecting various types of materials and using them to build tools and structures. The world is divided into 1 x 1 x 1 blocks which can vary in material, spawning location, and usability. Aside from the popularity of the base game, Minecraft has become well known for it's customization possibilities through a variety of open source application program interfaces. These application program interfaces allow players to modify textures and color palettes, add new items, block types and enemies, and more. 
 	
 \begin{figure}[H]%
     \centering
@@ -254,7 +255,7 @@ Once the height map has been searched for the presence of wood blocks, the 3D sp
 
 \subsection{Plot Analysis}
 
-After clearing the designated build area of trees, it was necessary to compute how buildings and structures should be distributed across the build area. The distribution of buildings is a key piece of the problem that we want to solve, which is determining how a procedurally generated village should adapt to various randomly selected terrain. For this problem we also applied a search-based approach, using a fitness/evaluation function which grades the suitability of different locations in the build area for the purpose of house building.
+After clearing the designated build area of trees, it was necessary to compute how buildings and structures should be distributed across the build area. The distribution of buildings is a key piece of the problem that we want to solve, which is determining how a procedurally generated village should adapt to various randomly selected terrain. For this problem we also applied a search-based approach, as well as adopting the use of a fitness function from genetic approaches, which grades the suitability of different locations in the build area for the purpose of house building.
 
 Our plot analysis algorithm divides the randomly selected build area into subdivisions that are based on the size of the total build area. For each subdivision, it generates a height map \& calculates the standard deviation of height within each respective subdivision. From here, the fitness function uses the standard deviations of height to evaluate which subdivisions are suitable for building houses on, with a preference for locations with low standard deviation of heights.
 
